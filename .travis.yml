@@ -15,9 +15,11 @@ after_success:
 notifications:
   email:
     recipients:
-      -skhabibullin@yandex.ru
+      skhabibullin@yandex.ru
     on_success: never # default: change
     on_failure: always # defa,ult: always
+
+# код взят с сайта https://codecov.io/ для чего он нужен нихрена не понятно
 env:
   global:
     - CODECOV_TOKEN="78b893ef-f69f-4bdf-8e64-e56b5fa74a79"

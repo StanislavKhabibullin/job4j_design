@@ -18,14 +18,15 @@ public class MatrixIt implements Iterator<Integer> {
             row++;
             column = 0;
         }
-        for (int i = row; i < data.length; i++) {
+       /* for (int i = row; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
                 if (Integer.valueOf(data[i][j]) != null) {
                     return true;
                 }
             }
         }
-        return false;
+        return false; */
+        return row < data.length;
     }
 
     @Override

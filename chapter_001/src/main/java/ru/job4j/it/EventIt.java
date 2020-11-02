@@ -15,6 +15,7 @@ public class EventIt implements Iterator<Integer> {
     public boolean hasNext() {
         for (int i = rsl; i < data.length; i++) {
             if (data[i] % 2 == 0) {
+                rsl = i;
                 return true;
             }
         }
@@ -26,12 +27,12 @@ public class EventIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        for (int i = rsl; i < data.length; i++) {
+    /*    for (int i = rsl; i < data.length; i++) {
             if (data[i] % 2 == 0) {
                 rsl = i;
                 break;
             }
-        }
+        } */
         return data[rsl++];
     }
 }

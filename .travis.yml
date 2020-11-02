@@ -18,6 +18,6 @@ notifications:
       -skhabibullin@yandex.ru
     on_success: never # default: change
     on_failure: always # defa,ult: always
-    env:
-      global:
-        - CODECOV_TOKEN="78b893ef-f69f-4bdf-8e64-e56b5fa74a79"
+env:
+  global:
+    - CODECOV_TOKEN="78b893ef-f69f-4bdf-8e64-e56b5fa74a79"

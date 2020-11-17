@@ -1,14 +1,11 @@
 package ru.job4j.it;
 
 import javax.swing.text.html.HTMLDocument;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class FlatMap<T> implements Iterator<T> {
     private final Iterator<Iterator<T>> data;
-    private Iterator<T> coursor = null;
+    private Iterator<T> coursor = Collections.emptyIterator();
     //private List<T> temp = new ArrayList<>();
 
 
@@ -25,13 +22,9 @@ public class FlatMap<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        if (coursor == null) {
-            coursor = data.next();
-        }
-        while (coursor.hasNext()|| data.hasNext()) {
-            if (!coursor.hasNext()) {
+        while (!coursor.hasNext()&& data.hasNext()) {
                 coursor = data.next();
-            }
+           }
             return coursor.hasNext();
         }
        /* if (coursor == null) {
@@ -45,8 +38,7 @@ public class FlatMap<T> implements Iterator<T> {
 
         }
         return coursor.hasNext(); */
-        return false;
-    }
+
 
     @Override
     public T next() {

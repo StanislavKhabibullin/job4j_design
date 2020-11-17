@@ -1,5 +1,6 @@
 package ru.job4j.it;
 
+import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +28,15 @@ public class FlatMap<T> implements Iterator<T> {
         if (coursor == null) {
             coursor = data.next();
         }
+        while (coursor.hasNext()|| data.hasNext()) {
+            if (!coursor.hasNext()) {
+                coursor = data.next();
+            }
+            return coursor.hasNext();
+        }
+       /* if (coursor == null) {
+            coursor = data.next();
+        }
         if (!coursor.hasNext() && !data.hasNext()) {
             return false;
         }
@@ -34,7 +44,8 @@ public class FlatMap<T> implements Iterator<T> {
             coursor = data.next();
 
         }
-        return coursor.hasNext();
+        return coursor.hasNext(); */
+        return false;
     }
 
     @Override

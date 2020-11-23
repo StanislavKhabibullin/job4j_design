@@ -1,13 +1,11 @@
 package ru.job4j.generics;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class SimpleArray<T> {
+public class SimpleArray<T> implements Iterator<T> {
    private T[] items;
    private int count;
+   private int position = 0;
 
    public SimpleArray(int size) {
       this.items = (T[]) new Object[size];
@@ -65,12 +63,17 @@ public class SimpleArray<T> {
         return null;
     }
 
-    public Iterator<T> iterator() {
-        List<T> rsl = new ArrayList<>();
-        for (int i = 0; i < this.items.length; i++) {
-            rsl.add(items[i]);
-        }
-        return rsl.iterator();
+    @Override
+    public boolean hasNext() {
+         return position < count;
+    }
+
+    @Override
+    public T next() {
+       if (!hasNext()) {
+           throw new NoSuchElementException();
+       }
+        return items[position++];
     }
 
     @Override
@@ -94,9 +97,9 @@ public class SimpleArray<T> {
         System.out.println(words.get(3));
         words.set(3, "forth");
         System.out.println(words);
-        Iterator<String> iterator = words.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+
+        while (words.hasNext()) {
+            System.out.println(words.next());
         }
     }
 }

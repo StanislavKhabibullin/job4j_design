@@ -2,12 +2,13 @@ package ru.job4j.generics;
 
 import java.util.*;
 
-public class SimpleArray<T> implements Iterator<T> {
+public class SimpleArray<T> implements Iterable<T> {
    private T[] items;
    private int count;
-   private int position = 0;
+    private int position = 0;
 
-   public SimpleArray(int size) {
+
+    public SimpleArray(int size) {
       this.items = (T[]) new Object[size];
       count = size;
    }
@@ -18,19 +19,11 @@ public class SimpleArray<T> implements Iterator<T> {
     }
 
     public T[] add(T model) {
-        T[] mas1 = (T[]) new Object[this.items.length + 1];
-        for (int i = 0; i < this.items.length; i++) {
-           if (items[i] == null) {
-               mas1[i] = model;
-               model = null;
-               continue;
-           }
-            mas1[i] = items[i];
-        }
-        mas1[this.items.length] = model;
-        this.items = mas1;
-        count = mas1.length;
-        return mas1;
+        T[] items1 = (T[]) new  Object[count+1];
+        System.arraycopy(this.items, 0, items1, 0, count);
+        items1[count++] = model;
+        this.items = items1;
+        return items1;
     }
 
     public T[] set(int index, T model) {
@@ -42,11 +35,12 @@ public class SimpleArray<T> implements Iterator<T> {
     public T[] remove(int index) {
        Objects.checkIndex(index, count);
         T[] mas1 = (T[]) new Object[this.items.length - 1];
-        int j = 0;
-        for (int i = 0; i < this.items.length; i++) {
-            if (i != index) {
-                mas1[j++] = items[i];
-            }
+        if (index != 0) {
+         System.arraycopy(this.items, 0, mas1, 0, index );
+         System.arraycopy(this.items, index + 1, mas1, index, count - index - 1 );
+        }
+        if (index == 0) {
+            System.arraycopy(this.items, 1, mas1, 0, count - 1 );
         }
         this.items = mas1;
         count--;
@@ -64,17 +58,24 @@ public class SimpleArray<T> implements Iterator<T> {
     }
 
     @Override
-    public boolean hasNext() {
-         return position < count;
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                return position < count;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return items[position++];
+            }
+        };
     }
 
-    @Override
-    public T next() {
-       if (!hasNext()) {
-           throw new NoSuchElementException();
-       }
-        return items[position++];
-    }
+
 
     @Override
     public String toString() {
@@ -98,8 +99,8 @@ public class SimpleArray<T> implements Iterator<T> {
         words.set(3, "forth");
         System.out.println(words);
 
-        while (words.hasNext()) {
-            System.out.println(words.next());
+        while (words.iterator().hasNext()) {
+            System.out.println(words.iterator().next());
         }
     }
 }

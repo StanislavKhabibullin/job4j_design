@@ -18,21 +18,16 @@ public class SimpleArray<T> implements Iterable<T> {
         this.count = count;
     }
 
-    public T[] add(T model) {
-        T[] items1 = (T[]) new  Object[count+1];
-        System.arraycopy(this.items, 0, items1, 0, count);
-        items1[count++] = model;
-        this.items = items1;
-        return items1;
+    void add(T model) {
+        items[count++] = model;
     }
 
-    public T[] set(int index, T model) {
+    void set(int index, T model) {
        Objects.checkIndex(index, count);
        this.items[index] = model;
-        return items;
     }
 
-    public T[] remove(int index) {
+    void remove(int index) {
        Objects.checkIndex(index, count);
         T[] mas1 = (T[]) new Object[this.items.length - 1];
         if (index != 0) {
@@ -44,7 +39,6 @@ public class SimpleArray<T> implements Iterable<T> {
         }
         this.items = mas1;
         count--;
-    return mas1;
     }
 
     public T get(int index) {

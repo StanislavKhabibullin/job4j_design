@@ -4,21 +4,22 @@ import java.util.*;
 
 public class SimpleArray<T> implements Iterable<T> {
    private T[] items;
-   private int count;
+   private int count = 0;
     private int position = 0;
 
 
     public SimpleArray(int size) {
       this.items = (T[]) new Object[size];
-      count = size;
    }
 
-    public SimpleArray(T[] items, int count) {
+  /*  public SimpleArray(T[] items) {
         this.items = items;
-        this.count = count;
+        this.count = items.length;
     }
 
+   */
     void add(T model) {
+
         items[count++] = model;
     }
 
@@ -82,7 +83,12 @@ public class SimpleArray<T> implements Iterable<T> {
     }
 
     public static void main(String[] args) {
-        SimpleArray<String> words = new SimpleArray<>(new String[]{"first", "second", "third", "fourth", "fifth" },5);
+        SimpleArray<String> words = new SimpleArray<>(10);
+        words.add("first");
+        words.add("second");
+        words.add("third");
+        words.add("first");
+        words.add("first");
 
         System.out.println(words);
         words.add("sixth");

@@ -5,7 +5,7 @@ import java.util.*;
 public class SimpleArray<T> implements Iterable<T> {
    private T[] items;
    private int count = 0;
-    private int position = 0;
+
 
 
     public SimpleArray(int size) {
@@ -30,7 +30,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     void remove(int index) {
        Objects.checkIndex(index, count);
-        T[] mas1 = (T[]) new Object[this.items.length - 1];
+       /* T[] mas1 = (T[]) new Object[this.items.length - 1];
         if (index != 0) {
          System.arraycopy(this.items, 0, mas1, 0, index );
          System.arraycopy(this.items, index + 1, mas1, index, count - index - 1 );
@@ -39,22 +39,25 @@ public class SimpleArray<T> implements Iterable<T> {
             System.arraycopy(this.items, 1, mas1, 0, count - 1 );
         }
         this.items = mas1;
+
+        */
+
+        System.arraycopy(this.items, index + 1, this.items, index, count - index - 1);
+        this.items[count - 1] = null;
         count--;
     }
 
     public T get(int index) {
         Objects.checkIndex(index, count);
-        for (int i = 0; i < this.items.length; i++) {
-            if (i == index) {
-                return items[i];
-            }
-        }
-        return null;
+
+        return items[index];
     }
 
+    int position =0;
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
+          return new Iterator<T>() {
+
             @Override
             public boolean hasNext() {
                 return position < count;

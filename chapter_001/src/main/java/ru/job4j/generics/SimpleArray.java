@@ -53,11 +53,11 @@ public class SimpleArray<T> implements Iterable<T> {
         return items[index];
     }
 
-    int position =0;
+
     @Override
     public Iterator<T> iterator() {
           return new Iterator<T>() {
-
+              int position =0;
             @Override
             public boolean hasNext() {
                 return position < count;
@@ -102,8 +102,10 @@ public class SimpleArray<T> implements Iterable<T> {
         words.set(3, "forth");
         System.out.println(words);
 
-        while (words.iterator().hasNext()) {
-            System.out.println(words.iterator().next());
+        Iterator<String> iterator = words.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
         }
     }
 }

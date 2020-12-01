@@ -1,48 +1,28 @@
 package ru.job4j.generics;
 
-import java.util.ArrayList;
-import java.util.List;
+public class RoleStore implements Store<Role> {
 
-public class RoleStore<T extends Base> implements Store<T> {
-    private final List<T> mem = new ArrayList<>();
+    MemStore<Role> mem = new MemStore<>();
 
     @Override
-    public void add(T model) {
+    public void add(Role model) {
         mem.add(model);
+
     }
 
     @Override
-    public boolean replace(String id, T model) {
-        T exp = findById(id);
-        if (exp != null) {
-            mem.set(Integer.valueOf(exp.getId()), model);
-        }
-        return false;
+    public boolean replace(String id, Role model) {
+        return mem.replace(id, model);
     }
 
     @Override
     public boolean delete(String id) {
-        int i = 0;
-        for (T rsl:mem
-        ) {
-            if (rsl.getId().equals(id)) {
-                mem.remove(i);
-                return true;
-            }
-            i++;
-        }
-
-        return false;
+        return mem.delete(id);
     }
 
     @Override
-    public T findById(String id) {
-        for (T rsl:mem
-        ) {
-            if (rsl.getId().equals(id)) {
-                return rsl;
-            }
-        }
-        return null;
+    public Role findById(String id) {
+        return mem.findById(id);
     }
+
 }

@@ -18,6 +18,7 @@ public class MemStore<T extends Base> implements Store<T> {
         int index = findIndexById(id);
         if (index != - 1) {
             mem.set(index, model);
+            return true;
         }
         return false;
     }
@@ -34,8 +35,9 @@ public class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public T findById(String id) {
-          if (findIndexById(id) != - 1) {
-                return mem.get(findIndexById(id));
+        int rsl = findIndexById(id);
+          if (rsl != - 1) {
+                return mem.get(rsl);
             }
         return null;
     }

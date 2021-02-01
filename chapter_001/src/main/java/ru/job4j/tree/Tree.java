@@ -28,6 +28,29 @@ public class Tree<E> implements SimpleTree<E> {
     }
 
     @Override
+    public boolean isBinary() {
+        Node<E> rsl = root;
+        int calc = 0;
+
+        for (Node<E> val:
+             rsl.children) {
+
+            if (val.children.size() > 2) {
+              return false;
+            }
+            Node<E> newNode = val.children.get(calc);
+            if (newNode.children != null) {
+                Tree<E> newTree = new Tree<>(val.children.get(calc).value);
+                newTree.root.children.addAll(newNode.children);
+                newTree.isBinary();
+            }
+            calc++;
+        }
+
+        return true;
+    }
+
+    @Override
     public Optional<Node<E>> findBy(E value) {
         Optional<Node<E>> rsl = Optional.empty();
         Queue<Node<E>> data = new LinkedList<>();

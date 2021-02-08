@@ -22,7 +22,7 @@ public class FlatMap<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        while (!coursor.hasNext()&& data.hasNext()) {
+        while (!coursor.hasNext() && data.hasNext()) {
                 coursor = data.next();
            }
             return coursor.hasNext();

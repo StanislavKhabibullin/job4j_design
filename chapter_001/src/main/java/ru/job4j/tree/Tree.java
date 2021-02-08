@@ -15,8 +15,8 @@ public class Tree<E> implements SimpleTree<E> {
         Optional<Node<E>> rsl = findBy(parent);
 
         if (rsl.isPresent()) {
-            for (Node<E> val:
-                 rsl.get().children) {
+            for (Node<E> val
+                    :rsl.get().children) {
                 if (findBy(child).isPresent()) {
                     return false;
                 }
@@ -29,22 +29,15 @@ public class Tree<E> implements SimpleTree<E> {
 
     @Override
     public boolean isBinary() {
-        Node<E> rsl = root;
-        int calc = 0;
-
-        for (Node<E> val:
-             rsl.children) {
-
-            if (val.children.size() > 2) {
-              return false;
+        Queue<Node<E>> data = new LinkedList<>();
+        data.offer(root);
+        while (!data.isEmpty()) {
+            Node<E> rsl = data.poll();
+            if (rsl.children.size() > 2) {
+                return false;
+            } else {
+                data.addAll(rsl.children);
             }
-            Node<E> newNode = val.children.get(calc);
-            if (newNode.children != null) {
-                Tree<E> newTree = new Tree<>(val.children.get(calc).value);
-                newTree.root.children.addAll(newNode.children);
-                newTree.isBinary();
-            }
-            calc++;
         }
 
         return true;

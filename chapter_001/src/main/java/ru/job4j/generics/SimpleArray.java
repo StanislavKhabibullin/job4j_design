@@ -57,7 +57,7 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
           return new Iterator<T>() {
-              int position =0;
+              int position = 0;
             @Override
             public boolean hasNext() {
                 return position < count;
@@ -78,8 +78,8 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public String toString() {
         List<String> value = new ArrayList<>();
-        for (T rsl:
-             this.items) {
+        for (T rsl
+                : this.items) {
             value.add(String.valueOf(rsl));
         }
         return value.toString();

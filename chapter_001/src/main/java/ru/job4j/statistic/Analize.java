@@ -4,11 +4,9 @@ import java.util.*;
 
 public class Analize {
 
-    public Info dif(List<User> previous, List<User> changed) {
+ /*   public Info dif(List<User> previous, List<User> changed) {
         Info rsl = new Info();
         int scratch = 0;
-        Collections.sort(previous);
-        Collections.sort(changed);
         for (User userPrev:
              previous) {
             for (User userChange:
@@ -44,6 +42,38 @@ public class Analize {
         return rsl;
     }
 
+  */
+
+    public Info difMap(List<User> previous, List<User> changed) {
+        Info rsl = new Info();
+        int scratch = 0;
+        Map<Integer, String> mapprev = new HashMap<>();
+
+        for (User use:
+             previous) {
+            mapprev.put(use.id, use.name);
+        }
+
+        for (User use:
+                changed) {
+           if (mapprev.containsKey(use.id)) {
+               if (!mapprev.get(use.id).equals(use.name)) {
+                   rsl.changed++;
+                   continue;
+               } else {
+                   scratch++;
+                   continue;
+               }
+           }  else {
+               rsl.aded++;
+               }
+        }
+        rsl.deleted = previous.size() - rsl.changed - scratch;
+
+        return rsl;
+    }
+
+
     public static void main(String[] args) {
         List<User> prev = new ArrayList<>();
         prev.add(new User(1, "Mik"));
@@ -59,7 +89,7 @@ public class Analize {
         chan.add(new User(6, "Mik"));
         chan.add(new User(8, "Mik"));
         Analize pres = new Analize();
-        Info result = pres.dif(prev, chan);
+        Info result = pres.difMap(prev, chan);
         System.out.println(result);
     }
 }

@@ -24,7 +24,7 @@ public class AnalizeTest {
         chan.add(new User(2, "Mik2"));
         chan.add(new User(3, "Mik3"));
         Analize pres = new Analize();
-        Info result = pres.dif(prev, chan);
+        Info result = pres.difMap(prev, chan);
         assertThat(result.deleted, is(2));
     }
 
@@ -43,7 +43,7 @@ public class AnalizeTest {
         chan.add(new User(3, "Mik3"));
         chan.add(new User(4, "Mik3"));
         Analize pres = new Analize();
-        Info result = pres.dif(prev, chan);
+        Info result = pres.difMap(prev, chan);
         assertThat(result.deleted, is(1));
         assertThat(result.changed, is(1));
     }
@@ -64,7 +64,7 @@ public class AnalizeTest {
         chan.add(new User(6, "Mik3"));
         chan.add(new User(7, "Mik3"));
         Analize pres = new Analize();
-        Info result = pres.dif(prev, chan);
+        Info result = pres.difMap(prev, chan);
         assertThat(result.deleted, is(1));
         assertThat(result.changed, is(1));
         assertThat(result.aded, is(2));

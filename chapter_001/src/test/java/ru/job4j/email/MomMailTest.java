@@ -19,11 +19,13 @@ public class MomMailTest {
         UserMails user4 = new UserMails("user4", "ups@pisem.net,aaa@bbb.ru");
         UserMails user5 = new UserMails("user5", "xyz@pisem.net");
         List<UserMails> listik = List.of(user1, user2, user3, user4, user5);
-        List<resultMails> res = new ArrayList<>();
+        List<ResultMails> res = new ArrayList<>();
         res.addAll(mailik.connect(listik));
-        resultMails user4_res = new resultMails("user4", List.of("ups@pisem.net", "aaa@bbb.ru"));
-        resultMails user5_res = new resultMails("user5", List.of("xyz@pisem.net"));
-        List<resultMails> expect = List.of(user4_res, user5_res);
+        ResultMails user4res;
+        user4res = new ResultMails("user4", List.of("ups@pisem.net", "aaa@bbb.ru"));
+        ResultMails user5res;
+        user5res = new ResultMails("user5", List.of("xyz@pisem.net"));
+        List<ResultMails> expect = List.of(user4res, user5res);
         assertThat(res, is(expect));
     }
 }

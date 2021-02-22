@@ -7,8 +7,8 @@ public class Info {
 
     @Override
     public String toString() {
-        return "Info{" +
-                "aded=" + aded
+        return "Info{"
+                + "aded=" + aded
                 + ", changed=" + changed
                 + ", deleted=" + deleted
                 + '}';

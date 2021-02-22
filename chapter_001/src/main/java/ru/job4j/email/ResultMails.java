@@ -3,11 +3,11 @@ package ru.job4j.email;
 import java.util.List;
 import java.util.Objects;
 
-public class resultMails {
+public class ResultMails {
     private String name;
     private List<String> nameAdress;
 
-    public resultMails(String name, List<String> nameAdress) {
+    public ResultMails(String name, List<String> nameAdress) {
         this.name = name;
         this.nameAdress = nameAdress;
     }
@@ -38,11 +38,15 @@ public class resultMails {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof resultMails)) return false;
-        resultMails that = (resultMails) o;
-        return getName().equals(that.getName()) &&
-                getNameAdress().equals(that.getNameAdress());
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof ResultMails)) {
+            return false;
+        }
+        ResultMails that = (ResultMails) o;
+        return getName().equals(that.getName())
+                && getNameAdress().equals(that.getNameAdress());
     }
 
     @Override

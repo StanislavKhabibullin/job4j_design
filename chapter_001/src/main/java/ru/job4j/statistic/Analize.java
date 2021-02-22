@@ -49,13 +49,13 @@ public class Analize {
         int scratch = 0;
         Map<Integer, String> mapprev = new HashMap<>();
 
-        for (User use:
-             previous) {
+        for (User use
+                :previous) {
             mapprev.put(use.id, use.name);
         }
 
-        for (User use:
-                changed) {
+        for (User use
+                :changed) {
            if (mapprev.containsKey(use.id)) {
                if (!mapprev.get(use.id).equals(use.name)) {
                    rsl.changed++;

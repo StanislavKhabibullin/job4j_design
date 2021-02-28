@@ -9,18 +9,9 @@ import java.util.stream.Collectors;
 public class LogFilter {
     public static List<String> filter(String file) {
         try (BufferedReader in = new  BufferedReader(new FileReader(file))){
-            var mas = in.lines().filter(s -> {
-                List<String> masik = new ArrayList<>();
-                boolean vibor = false;
-                masik = Arrays.asList(s.split(String.valueOf(' ')));
-                for (String filt:
-                     masik) {
-                    if (filt.equals("404")) {
-                        vibor = true;
-                    }
-                }
-                return vibor;
-            }).collect(Collectors.toList());
+            var mas = in.lines().filter(s ->
+                 s.contains("404")
+            ).collect(Collectors.toList());
 
             return  mas;
         } catch (FileNotFoundException e) {
@@ -37,7 +28,7 @@ public class LogFilter {
         ))){
             for (String stroka:
                  log) {
-                out.write(stroka + '\n');
+                out.println(stroka);
             }
 
         } catch (FileNotFoundException e) {

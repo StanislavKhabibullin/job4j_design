@@ -18,12 +18,14 @@ public class Config {
         try (BufferedReader read = new BufferedReader(
                 new FileReader(this.path))){
             read.lines().forEach(s -> {
-                List<String> mas = Arrays.asList(s.split(" ").clone());
+                List<String> mas = Arrays.asList(s.split(" "));
                 String val = "";
-                for (int j = 1; j < mas.size(); j++) {
-                    val = val + mas.get(j) + " ";
+                if (!mas.get(0).equals("#")) {
+                    for (int j = 1; j < mas.size(); j++) {
+                        val = val + mas.get(j) + " ";
+                    }
+                    values.put(mas.get(0), val);
                 }
-                values.put(mas.get(0), val);
             });
 
         } catch (FileNotFoundException e) {
@@ -64,5 +66,6 @@ public class Config {
         test1.load();
         System.out.println(test1.value("name"));
         System.out.println(test1.value("name2"));
+        System.out.println(test1.value("#"));
     }
 }

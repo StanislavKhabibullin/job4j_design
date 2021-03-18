@@ -6,7 +6,7 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
-
+// тест экзаменационного файла
 public class MomMailTest {
 
     @Test

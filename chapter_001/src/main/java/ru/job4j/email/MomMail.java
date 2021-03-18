@@ -1,36 +1,47 @@
 package ru.job4j.email;
 
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
 public class MomMail {
-    private List<ResultMails> rsl = new ArrayList<>();
-    private List<ResultMails> result = new ArrayList<>();
-
-    public List<ResultMails> connect(List<UserMails> inner) {
+    private Map<String, Set<String>> rsl = new HashMap<>();
+    private Map<String, Set<String>> result = new LinkedHashMap<>();
+    boolean schet = true;
+    public Map<String, Set<String>> connect(List<UserMails> inner) {
         for (int i = 0; i < inner.size(); i++) {
-            List<String> list = new ArrayList<>();
+            Set<String> list = new HashSet<>();
             for (String s : inner.get(i).getUserMail().split(",")) {
                 list.add(s);
             }
-            rsl.add(new ResultMails(inner.get(i).getUserName(), list));
+            rsl.put(inner.get(i).getUserName(), list);
         }
-        boolean schet = true;
-        for (int i = 0; i < rsl.size(); i++) {
-            for (int j = 0; j < rsl.get(i).getNameAdress().size(); j++) {
-                for (int k = i + 1; k < rsl.size(); k++) {
-                    for (int l = 0; l < rsl.get(k).getNameAdress().size(); l++) {
-                        if (rsl.get(i).getNameAdress().get(j).equals(rsl.get(k).getNameAdress().get(l))) {
-                           schet = false;
-                        }
-                    }
 
+        for (Entry<String, Set<String>> entry : rsl.entrySet()) {
+            String key = entry.getKey();
+            Set<String> value = entry.getValue();
+            for (Entry<String, Set<String>> entryres
+                    : result.entrySet()){
+                Set<String> valueRes = entryres.getValue();
+                for (String mail:
+                     valueRes) {
+                    if (value.contains(mail)) {
+                        valueRes.addAll(value);
+                        schet = false;
+                        break;
+                    }
                 }
             }
             if (schet) {
-                result.add(rsl.get(i));
+                result.put(key, value);
+            } else {
+                schet = true;
             }
-            schet = true;
+
+
+
         }
+
         return result;
     }
 
@@ -42,12 +53,20 @@ public class MomMail {
         UserMails user4 = new UserMails("user4", "ups@pisem.net,aaa@bbb.ru");
         UserMails user5 = new UserMails("user5", "xyz@pisem.net");
         List<UserMails> listik = List.of(user1, user2, user3, user4, user5);
-        List<ResultMails> res = new ArrayList<>();
-        res.addAll(mailik.connect(listik));
-        for (ResultMails user
-                :res) {
-            System.out.println(user);
-        }
+        Map<String, Set<String>> res = new HashMap<>();
+        res.putAll(mailik.connect(listik));
+        for (Map.Entry user
+                :res.entrySet())
+            System.out.println(user.getKey() + "   " + user.getValue());
+        Map <String, String> books = new HashMap<>();
+        books.put("Война и мир", "Лев Толстой");
+        books.put("Преступление и наказание", "Федор Достоевский");
+        books.put("Философия Java", "Брюс Эккель");
+        books.put("Братья Карамазовы", "Федор Достоевский");
+        books.put("Властелин Колец", "Джон Толкин");
+
+        books.merge("Философия Java", "Брюс Эккель", (a, b) -> b +  " и кто-то там еще");
+        books.forEach((a,b) -> System.out.println("Название:" + a + ". Автор: " + b));
     }
 
 }

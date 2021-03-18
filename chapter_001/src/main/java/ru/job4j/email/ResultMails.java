@@ -2,12 +2,13 @@ package ru.job4j.email;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class ResultMails {
     private String name;
-    private List<String> nameAdress;
+    private Set<String> nameAdress;
 
-    public ResultMails(String name, List<String> nameAdress) {
+    public ResultMails(String name, Set<String> nameAdress) {
         this.name = name;
         this.nameAdress = nameAdress;
     }
@@ -20,11 +21,11 @@ public class ResultMails {
         this.name = name;
     }
 
-    public List<String> getNameAdress() {
+    public Set<String> getNameAdress() {
         return nameAdress;
     }
 
-    public void setNameAdress(List<String> nameAdress) {
+    public void setNameAdress(Set<String> nameAdress) {
         this.nameAdress = nameAdress;
     }
 

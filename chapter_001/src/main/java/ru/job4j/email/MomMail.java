@@ -9,13 +9,7 @@ public class MomMail {
     private Map<String, Set<String>> result = new LinkedHashMap<>();
     boolean schet = true;
     public Map<String, Set<String>> connect(List<UserMails> inner) {
-        for (int i = 0; i < inner.size(); i++) {
-            Set<String> list = new HashSet<>();
-            for (String s : inner.get(i).getUserMail().split(",")) {
-                list.add(s);
-            }
-            rsl.put(inner.get(i).getUserName(), list);
-        }
+        zappMappy(inner);
 
         for (Entry<String, Set<String>> entry : rsl.entrySet()) {
             String key = entry.getKey();
@@ -43,6 +37,16 @@ public class MomMail {
         }
 
         return result;
+    }
+
+    public void zappMappy(List<UserMails> userMails) {
+        for (int i = 0; i < userMails.size(); i++) {
+            Set<String> list = new HashSet<>();
+            for (String s : userMails.get(i).getUserMail().split(",")) {
+                list.add(s);
+            }
+            rsl.put(userMails.get(i).getUserName(), list);
+        }
     }
 
     public static void main(String[] args) {

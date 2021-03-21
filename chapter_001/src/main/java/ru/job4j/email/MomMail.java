@@ -15,10 +15,10 @@ public class MomMail {
             String key = entry.getKey();
             Set<String> value = entry.getValue();
             for (Entry<String, Set<String>> entryres
-                    : result.entrySet()){
+                    : result.entrySet()) {
                 Set<String> valueRes = entryres.getValue();
-                for (String mail:
-                     valueRes) {
+                for (String mail
+                        : valueRes) {
                     if (value.contains(mail)) {
                         valueRes.addAll(value);
                         schet = false;
@@ -60,9 +60,10 @@ public class MomMail {
         Map<String, Set<String>> res = new HashMap<>();
         res.putAll(mailik.connect(listik));
         for (Map.Entry user
-                :res.entrySet())
+                :res.entrySet()) {
             System.out.println(user.getKey() + "   " + user.getValue());
-        Map <String, String> books = new HashMap<>();
+        }
+        Map<String, String> books = new HashMap<>();
         books.put("Война и мир", "Лев Толстой");
         books.put("Преступление и наказание", "Федор Достоевский");
         books.put("Философия Java", "Брюс Эккель");
@@ -70,7 +71,7 @@ public class MomMail {
         books.put("Властелин Колец", "Джон Толкин");
 
         books.merge("Философия Java", "Брюс Эккель", (a, b) -> b +  " и кто-то там еще");
-        books.forEach((a,b) -> System.out.println("Название:" + a + ". Автор: " + b));
+        books.forEach((a, b) -> System.out.println("Название:" + a + ". Автор: " + b));
     }
 
 }

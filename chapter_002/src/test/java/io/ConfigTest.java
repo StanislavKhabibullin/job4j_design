@@ -8,7 +8,7 @@ import static org.hamcrest.core.Is.is;
 public class ConfigTest {
 
     @Test
-    public void WhenPairWithOutComment() {
+    public void whenPairWithOutComment() {
         String path = "WhenPairWithOutComment.properties.txt";
         Config config = new Config(path);
         config.load();
@@ -17,7 +17,7 @@ public class ConfigTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void WhenPairWithOutCommentException() {
+    public void whenPairWithOutCommentException() {
         String path = "WhenPairWithOutComment.properties.txt";
         Config config = new Config(path);
         config.load();

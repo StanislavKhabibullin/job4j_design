@@ -18,12 +18,12 @@ public class AbuseTest {
     public void drop() throws IOException {
         File source = folder.newFile("source.txt");
         File target = folder.newFile("target.txt");
-        try (PrintWriter out = new PrintWriter(source)){
+        try (PrintWriter out = new PrintWriter(source)) {
             out.print("hello foolish dude");
         }
         Abuse.drop(source.getAbsolutePath(), target.getAbsolutePath(), List.of("foolish"));
         StringBuilder rsl = new StringBuilder();
-        try (BufferedReader in = new BufferedReader(new FileReader(target))){
+        try (BufferedReader in = new BufferedReader(new FileReader(target))) {
             in.lines().forEach(s -> rsl.append(s));
         }
         assertThat(rsl.toString(), is("hello dude "));

@@ -11,7 +11,7 @@ public class Analizy {
 
         try (BufferedReader read = new BufferedReader(
                 new FileReader(source)
-        )){
+        )) {
             read.lines().forEach(s -> {
                 String[] mas = s.split(" ");
                 if (!mas[0].equals("")) {

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class LogFilter {
     public static List<String> filter(String file) {
-        try (BufferedReader in = new  BufferedReader(new FileReader(file))){
+        try (BufferedReader in = new  BufferedReader(new FileReader(file))) {
             var mas = in.lines().filter(s ->
                  s.contains("404")
             ).collect(Collectors.toList());
@@ -25,9 +25,9 @@ public class LogFilter {
     public static void save(List<String> log, String fileName) {
         try (PrintWriter out = new PrintWriter(new BufferedOutputStream(
                 new FileOutputStream(fileName)
-        ))){
-            for (String stroka:
-                 log) {
+        ))) {
+            for (String stroka
+                    : log) {
                 out.println(stroka);
             }
 

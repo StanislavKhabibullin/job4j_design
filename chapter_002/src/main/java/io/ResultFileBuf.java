@@ -9,7 +9,7 @@ public class ResultFileBuf {
     public static void main(String[] args) {
         try (PrintWriter out = new PrintWriter(new BufferedOutputStream(
                 new FileOutputStream("ResultBuf.txt")
-        ))){
+        ))) {
             out.write("Hellow Word Buf" + '\n');
             out.printf("%s%n", "Some string");
             out.printf("%d%n", 10);

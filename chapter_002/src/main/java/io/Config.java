@@ -16,7 +16,7 @@ public class Config {
 
     public void load() {
         try (BufferedReader read = new BufferedReader(
-                new FileReader(this.path))){
+                new FileReader(this.path))) {
             read.lines().forEach(s -> {
                 List<String> mas = Arrays.asList(s.split(" "));
                 String val = "";
@@ -47,7 +47,7 @@ public class Config {
     public String toString() {
         StringJoiner out = new StringJoiner(System.lineSeparator());
         try (BufferedReader read = new BufferedReader(
-                new FileReader(this.path))){
+                new FileReader(this.path))) {
             read.lines().forEach(out::add);
 
         } catch (FileNotFoundException e) {

@@ -16,7 +16,7 @@ public class Search {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return searcher.getPaths.stream().filter(condition).collect(Collectors.toList());
+        return searcher.getPaths;
     }
 
 

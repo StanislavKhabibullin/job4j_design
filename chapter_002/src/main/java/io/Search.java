@@ -22,7 +22,16 @@ public class Search {
 
 
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(".");
-        search(start, p -> p.toFile().getName().endsWith("html")).forEach(System.out::println);
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Root folder is null. file extension is null.");
+        }
+        if (args.length >= 3) {
+            throw new IllegalArgumentException("To much arguments");
+        }
+        if (args.length == 1) {
+            throw new IllegalArgumentException("Need one more argument");
+        }
+        Path start = Paths.get(args[0]);
+        search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 }

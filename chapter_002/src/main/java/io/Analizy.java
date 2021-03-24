@@ -17,14 +17,16 @@ public class Analizy {
             while (lin != null) {
 
                     String[] mas = lin.split(" ");
-                    if (!mas[0].equals("")) {
-                        if ((mas[0].equals("200") || mas[0].equals("300")) && (scramb != 0)) {
-                            result.add(mas[1]);
+                    String begin = mas[0];
+                    String end = mas[1];
+                    if (!begin.equals("")) {
+                        if ((begin.equals("200") || begin.equals("300")) && (scramb != 0)) {
+                            result.add(end);
                             scramb = 0;
                         }
-                        if ((mas[0].equals("400") || mas[0].equals("500")) && (scramb == 0)) {
-                            result.add(mas[1]);
-                            scramb = Integer.valueOf(mas[0]);
+                        if ((begin.equals("400") || begin.equals("500")) && (scramb == 0)) {
+                            result.add(end);
+                            scramb = Integer.valueOf(begin);
                         }
 
                     }

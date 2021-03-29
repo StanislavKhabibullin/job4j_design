@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Search {
-    public static List<Path> search(Path root, Predicate<Path> condition) {
+    public List<Path> search(Path root, Predicate<Path> condition) {
         Path start = root;
         SearchFiles searcher = new SearchFiles(condition);
         try {
@@ -32,6 +32,7 @@ public class Search {
             throw new IllegalArgumentException("Need one more argument");
         }
         Path start = Paths.get(args[0]);
-        search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
+        Search ser = new Search();
+        ser.search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 }

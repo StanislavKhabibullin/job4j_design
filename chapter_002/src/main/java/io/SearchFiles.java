@@ -22,7 +22,7 @@ public class SearchFiles implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-        var result = file.getFileName();
+        var result = file;
         if (predicate.test(result)) {
             getPaths.add(result);
         }

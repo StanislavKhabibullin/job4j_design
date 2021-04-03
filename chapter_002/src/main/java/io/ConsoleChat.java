@@ -2,12 +2,15 @@ package io;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class ConsoleChat {
     private final String path;
     private final String botAnswer;
+    private final String[] answersList;
     private static final String OUT = "закончить";
     private static final String STOP = "стоп";
     private static final String CONTINUE = "продолжить";
@@ -15,36 +18,45 @@ public class ConsoleChat {
     public ConsoleChat(String path, String botAnswer) {
         this.path = path;
         this.botAnswer = botAnswer;
+        this.answersList = readFile(path);
     }
 
     public void run(){
         Scanner in = new Scanner(System.in);
         String res = in.nextLine();
-        writeDataInFile(botAnswer, "UserMessage: " + res);
+        List<String> userLog = new ArrayList<>();
+        userLog.add("UserMessage: " + res + '\n');
         boolean scratch = true;
         while (!res.equals(OUT)) {
             if (res.equals(STOP)) {
+                userLog.add("User input STOP" + '\n');
                 System.out.println("User input STOP");
                 scratch = false;
             }
             if (res.equals(CONTINUE)) {
+                userLog.add("User input continue" + '\n');
                 System.out.println("User input continue");
                 scratch = true;
             }
 
             if (scratch) {
-                var answer = readFile(path);
+                Random random = new Random();
+                int index = random.nextInt(answersList.length);
+                var answer = answersList[index];
                 System.out.println(answer);
-                writeDataInFile(botAnswer, "BotAnswer: " + answer);
+                userLog.add("BotAnswer: " + answer + '\n');
             }
             res = in.nextLine();
-            writeDataInFile(botAnswer, "UserMessage: " + res);
+            userLog.add("UserMessage: " + res + '\n');
         }
         in.close();
+        writeDataInFile(botAnswer, userLog);
+        System.out.println("UserLog contains: ");
+        System.out.println(userLog);
 
     }
 
-    public String readFile(String path) {
+    public String[] readFile(String path) {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(path, Charset.forName("WINDOWS-1251")))) {
             int data;
@@ -58,14 +70,16 @@ public class ConsoleChat {
             e.printStackTrace();
         }
         var result = builder.toString().split(" ");
-        Random random = new Random();
-        int index = random.nextInt(result.length);
-        return result[index];
+        return result;
     }
 
-    public void writeDataInFile(String path, String data) {
+    public void writeDataInFile(String path, List<String> data) {
         try (BufferedWriter br = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251"), true))){
-            br.write(data + System.lineSeparator());
+            for (String stroka:
+                 data) {
+                br.write(stroka + System.lineSeparator());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 public class Zip {
@@ -30,10 +31,35 @@ public class Zip {
                return Boolean.parseBoolean(null);
            }
            else {
-               packSingleFile(res.toFile(), finalTarget);
+
+             //  packSingleFile(res.toFile(), finalTarget);
+              // System.out.println("Путь - " + res.toFile() + "Archive - " + finalTarget);
            }
+
            return res.isAbsolute();
        }).forEach(System.out::println);
+
+        try (ZipOutputStream zip = new ZipOutputStream(
+                new BufferedOutputStream(
+                        new FileOutputStream(finalTarget)
+                )
+        )) {
+            for (Path path:
+                 ser) {
+                zip.putNextEntry(new ZipEntry(path.toFile().getPath()));
+                try (BufferedInputStream out = new BufferedInputStream(
+                        new FileInputStream(path.toFile())
+                )) {
+                    zip.write(out.readAllBytes());
+
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -43,10 +69,11 @@ public class Zip {
              BufferedOutputStream buf = new BufferedOutputStream(fos);
                ZipOutputStream zip = new ZipOutputStream(buf)
         ){
+            ZipEntry notes = new ZipEntry(source.getPath());
             try (BufferedInputStream out = new BufferedInputStream(
                     new FileInputStream(source)
             )){
-                ZipEntry notes = new ZipEntry(String.valueOf(target));
+
                 zip.putNextEntry(notes);
                 zip.write(out.readAllBytes());
                 zip.closeEntry();

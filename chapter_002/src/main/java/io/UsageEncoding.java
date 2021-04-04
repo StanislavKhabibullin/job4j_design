@@ -8,9 +8,9 @@ public class UsageEncoding {
     public String readFile(String path) {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(path, Charset.forName("WINDOWS-1251")))){
-            int data;
-            while ((data = br.read()) > 0) {
-                builder.append((char) data);
+            String stroka;
+            while ((stroka = br.readLine()) != null) {
+                builder.append(stroka);
             }
 
         } catch (FileNotFoundException e) {

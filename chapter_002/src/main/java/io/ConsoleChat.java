@@ -25,29 +25,26 @@ public class ConsoleChat {
         Scanner in = new Scanner(System.in);
         String res = in.nextLine();
         List<String> userLog = new ArrayList<>();
-        userLog.add("UserMessage: " + res + '\n');
+        userLog.add("UserMessage: " + res + System.lineSeparator());
         boolean scratch = true;
         while (!res.equals(OUT)) {
-            if (res.equals(STOP)) {
-                userLog.add("User input STOP" + '\n');
-                System.out.println("User input STOP");
-                scratch = false;
+            switch (res) {
+                case STOP:
+                    userLog.add("User input STOP" + System.lineSeparator());
+                    System.out.println("User input STOP");
+                    scratch = false;
+                    break;
+                case CONTINUE:
+                    userLog.add("User input continue" + System.lineSeparator());
+                    System.out.println("User input continue");
+                    scratch = true;
+                    break;
             }
-            if (res.equals(CONTINUE)) {
-                userLog.add("User input continue" + '\n');
-                System.out.println("User input continue");
-                scratch = true;
-            }
-
             if (scratch) {
-                Random random = new Random();
-                int index = random.nextInt(answersList.length);
-                var answer = answersList[index];
-                System.out.println(answer);
-                userLog.add("BotAnswer: " + answer + '\n');
+                userLog.add(getBotAnswer());
             }
             res = in.nextLine();
-            userLog.add("UserMessage: " + res + '\n');
+            userLog.add("UserMessage: " + res + System.lineSeparator());
         }
         in.close();
         writeDataInFile(botAnswer, userLog);
@@ -56,12 +53,20 @@ public class ConsoleChat {
 
     }
 
+    public String getBotAnswer() {
+        Random random = new Random();
+        int index = random.nextInt(answersList.length);
+        var answer = answersList[index];
+        System.out.println(answer);
+        return "BotAnswer: " + answer + System.lineSeparator();
+    }
+
     public String[] readFile(String path) {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(path, Charset.forName("WINDOWS-1251")))) {
-            int data;
-            while ((data = br.read()) > 0) {
-                builder.append((char) data);
+            String stroka;
+            while ((stroka = br.readLine()) != null) {
+                builder.append(stroka);
             }
 
         } catch (FileNotFoundException e) {

@@ -10,42 +10,49 @@ import java.util.zip.ZipOutputStream;
 public class Zip {
 
     public void packFiles(List<String> sources, String target) {
+        Map<String, String> arguments = argumetsRecieves(sources);
+        target = arguments.get("-o");
+        String f = arguments.get("-e");
+        var fMas = f.split("\\.");
+        File finalTarget = new File(target);
+        var sour = arguments.get("-d");
+        var road = pathList(sour, fMas[1]);
+        packManyFiles(road, finalTarget);
+    }
+
+    public Map<String, String> argumetsRecieves(List<String> masik) {  // вытаскиваем аргументы для работы
         Map<String, String> arguments = new HashMap<>();
-        for (int i = 0; i < sources.size(); i++) {
-            List<String> mas = Arrays.asList(sources.get(i).split("="));
+        for (int i = 0; i < masik.size(); i++) {
+            List<String> mas = Arrays.asList(masik.get(i).split("="));
             arguments.put(mas.get(0), mas.get(1));
         }
         arguments.forEach((key, value) -> {
             System.out.println("key - " + key + " value - " + value);
         });
-        target = arguments.get("-o");
-        String f = arguments.get("-e");
-        var fMas = f.split("\\.");
+        return arguments;
+    }
+
+    public List<Path> pathList(String directory, String fileExtension) { // определеям пути по которым находятся файлы для архивации
         Search searcher = new Search();
-        File finalTarget = new File(target);
-        var sour = arguments.get("-d");
-       var ser = searcher.search(Path.of(sour), path -> path.toString()
-                .endsWith(fMas[1]));
-       searcher.search(Path.of(sour), res -> {
-           if (ser.contains(res)) {
-               return Boolean.parseBoolean(null);
-           }
-           else {
+        var ser = searcher.search(Path.of(directory), path -> path.toString()
+                .endsWith(fileExtension));
+        var road = searcher.search(Path.of(directory), res -> {
+            if (ser.contains(res)) {
+                return Boolean.parseBoolean(null);
+            }
+            return res.isAbsolute();
+        });
+        return road;
+    }
 
-             //  packSingleFile(res.toFile(), finalTarget);
-              // System.out.println("Путь - " + res.toFile() + "Archive - " + finalTarget);
-           }
-
-           return res.isAbsolute();
-       }).forEach(System.out::println);
-
+    public void packManyFiles(List<Path> paths, File target) {
         try (ZipOutputStream zip = new ZipOutputStream(
                 new BufferedOutputStream(
-                        new FileOutputStream(finalTarget)
+                        new FileOutputStream(target)
                 )
         )) {
             for (Path path:
-                 ser) {
+                    paths) {
                 zip.putNextEntry(new ZipEntry(path.toFile().getPath()));
                 try (BufferedInputStream out = new BufferedInputStream(
                         new FileInputStream(path.toFile())
@@ -60,7 +67,6 @@ public class Zip {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void packSingleFile(File source, File target) {

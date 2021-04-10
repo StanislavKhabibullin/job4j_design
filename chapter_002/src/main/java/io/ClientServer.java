@@ -7,11 +7,15 @@ import java.net.Socket;
 
 public class ClientServer {
     public static void main(String[] args) throws IOException {
-        ServerSocket socket = new ServerSocket(8000);
+        ServerSocket socket = new ServerSocket(9000);
         Socket clientSocket = socket.accept();
-        clientSocket.getOutputStream().write(64);
+        var out = clientSocket.getOutputStream();
+       // out.write(64);
+        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+        out.write("<h2> Hello dear friends <h2>".getBytes());
+        out.flush();
 
-
+        clientSocket.close();
         socket.close();
     }
 }

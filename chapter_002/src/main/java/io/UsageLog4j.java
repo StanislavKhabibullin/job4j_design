@@ -14,5 +14,17 @@ public class UsageLog4j {
         LOG.info("Info manager");
         LOG.warn("Warn manager");
         LOG.error("Error manager");
+        String name = "Petr Arsentev";
+        int age = 33;
+        double weight = 88.2;
+        char classLetter = 'a';
+        long schet = 999999999;
+        boolean opinion = true;
+        short student = 1954;
+        byte bit = 64;
+        LOG.debug("User info name : {}, age : {}, weight : {},"
+                + "classletter : {}, bankSchetNumber : {}," +
+                        "hisPoliticOpinion : {}, studentsQantity : {}, bit : {}"
+                , name, age, weight, classLetter, schet, opinion, student, bit);
     }
 }

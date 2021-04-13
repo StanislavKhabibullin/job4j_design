@@ -11,8 +11,8 @@ public class ClientServer {
         Socket clientSocket = socket.accept();
         var out = clientSocket.getOutputStream();
        // out.write(64);
-        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-        out.write("<h2> Hello dear friends <h2>".getBytes());
+        out.write("HTTP/1.1 200 asdfdasa OK\r\n\r\n".getBytes());
+        //out.write("<h2> Hello dear friends <h2>".getBytes());
         out.flush();
 
         clientSocket.close();

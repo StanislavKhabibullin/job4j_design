@@ -4,12 +4,9 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 public class UsageLog4j {
-    private static final Logger LOG;
-
-    static {
-        LOG = LoggerFactory
+    private static final Logger LOG=LoggerFactory
                 .getLogger(UsageLog4j.class.getName());
-    }
+
 
     public static void main(String[] args) {
         LOG.trace("Trace manager");

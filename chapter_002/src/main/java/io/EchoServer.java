@@ -44,7 +44,7 @@ public class EchoServer {
                   */
 
                     out.write("HTTP/1.1 200 OK\r\n\"".getBytes());  // в ответ записываем строку "HTTP/1.1 200 OK\r\n\"" в выходной поток
-                  //  out.write("<h2>Hellow dear friends<h2>".getBytes());
+                    out.write("<h2>Hellow dear friends<h2>".getBytes());
                     if (excited) {
                         server.close();
                     }

@@ -9,6 +9,7 @@ import java.net.Socket;
 
 public class EchoServer {
     public static void main(String[] args) throws IOException {
+
         try (ServerSocket server = new ServerSocket(9000)){   //Создаем сервер адрес - localhost, порт - 9000
             while (!server.isClosed()) {          // сервер работает, пока его принудительно не закроют
                 Socket socket = server.accept();  //ожидаем когда к серверу обратиться клиент, программа в режиме ожидания
@@ -17,37 +18,32 @@ public class EchoServer {
                              new InputStreamReader(socket.getInputStream())   // входной поток
                      )){
                     boolean excited = false;
-                    for (String line = in.readLine(); line != null && line.isEmpty();) {
+                    boolean isRead = false;
+                    String text = "";
+                    for (String line = in.readLine(); line != null && !line.isEmpty(); line = in.readLine()) {
                         if (line.contains("Exit")) {
                             excited = true;
                         }
-                    }
-                   /* while (!((str = in.readLine()).isEmpty())) {     // читаем весь входной поток
-                        System.out.println(str);
-                        if (str.contains("msg")) {
-                            var stroka = str.split("=");
-                            var stroka2 = stroka[1].split(" ");
-                            result = stroka2[0];
-                            System.out.println("result == " + result);
-                        } else {
-
-
-                           out.write("There is no message".getBytes());
+                        isRead = true;
+                        if (line.contains("?msg=")) {
+                            text = text + line;
                         }
                     }
-                    out.write("HTTP/1.1 200 OK\r\n\"".getBytes());  // в ответ записываем строку "HTTP/1.1 200 OK\r\n\"" в выходной поток
-                    out.write("Hellow dear friends".getBytes());
-                 /*  if (result.equals(null)) {
-                       server.close();
-                   }
-
-                  */
-
-                    out.write("HTTP/1.1 200 OK\r\n\"".getBytes());  // в ответ записываем строку "HTTP/1.1 200 OK\r\n\"" в выходной поток
-                    out.write("<h2>Hellow dear friends<h2>".getBytes());
-                    if (excited) {
-                        server.close();
+                    if (isRead) {
+                        out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                        out.write("<h2>Hello dear friends<h2>".getBytes());
+                        //server.close();
+                        if (excited) {
+                            out.write("\n".getBytes());
+                            out.write("User write Exit".getBytes());
+                            server.close();
+                        }
+                        var result = text.split(" ");
+                        var finResult = result[1].split("=");
+                        out.write("\n".getBytes());
+                        out.write(finResult[1].getBytes());
                     }
+
 
                 }
             }
@@ -55,4 +51,7 @@ public class EchoServer {
         }
 
     }
-}
+
+    }
+
+

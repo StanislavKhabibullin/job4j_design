@@ -1,5 +1,8 @@
 package io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +11,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-    public static void main(String[] args) throws IOException {
+    public static final Logger LOG = LoggerFactory
+            .getLogger(EchoServer.class.getName());
+
+    public static void main(String[] args) {
 
         try (ServerSocket server = new ServerSocket(9000)){   //Создаем сервер адрес - localhost, порт - 9000
             while (!server.isClosed()) {          // сервер работает, пока его принудительно не закроют
@@ -48,6 +54,8 @@ public class EchoServer {
                 }
             }
 
+        } catch (IOException e) {
+           LOG.error("Error input", e);
         }
 
     }

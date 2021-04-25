@@ -50,5 +50,6 @@ public class Person {
                         + "}";
         final Person personMod = gson.fromJson(personJson, Person.class);
         System.out.println(personMod);
+
     }
 }

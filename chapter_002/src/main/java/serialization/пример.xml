@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DoggyClub pedegree="true" numberAwards="2">
+    <NickName nick="SubZero" age = "6"/>
+    <dogSizes>
+        <dogSize>Small</dogSize>
+        <dogSize>Medium</dogSize>
+    </dogSizes>
+    <breed>shepherd</breed>
+</DoggyClub>

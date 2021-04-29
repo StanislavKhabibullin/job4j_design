@@ -1,12 +1,26 @@
 package serialization;
 
+import com.sun.xml.txw2.annotation.XmlElement;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import java.io.*;
 import java.nio.file.Files;
 
+@XmlElement(value = "contact")
+
 public class Contact implements Serializable {
-    private final static long serialVersionUID = 1L;
-    private final int zipCode;
-    private final String phone;
+    private static long serialVersionUID = 1L;
+
+    @XmlAttribute
+    private int zipCode;
+
+    @XmlAttribute
+    private String phone;
+
+    public Contact() {
+    }
 
     public Contact(int zipCode, String phone) {
         this.zipCode = zipCode;

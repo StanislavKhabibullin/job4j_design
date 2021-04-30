@@ -48,7 +48,7 @@ public class Person_POJO_to_JSon {
     }
 
     public static void main(String[] args) {
-        JSONObject jsonContact = new JSONObject("{\"phone\":\"+7(924)111-111-11-11\"}");
+        JSONObject jsonContact = new JSONObject("{\"phone\":\"+7(924)111-777-11-11\"}");
 
         List<String> statuses = new ArrayList<>();
         statuses.add("married");
@@ -62,8 +62,8 @@ public class Person_POJO_to_JSon {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("sex", person.isSex());
         jsonObject.put("age", person.getAge());
-        jsonObject.put("contact", person.getContact());
-        jsonObject.put("statuses", person.getStatuses());
+        jsonObject.put("contact", jsonContact);
+        jsonObject.put("statuses", jsonStatuses);
 
         System.out.println(jsonObject);
 

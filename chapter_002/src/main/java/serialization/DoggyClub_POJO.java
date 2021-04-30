@@ -1,10 +1,12 @@
 package serialization;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class DoggyClub_POJO {
     private final boolean pedegree;
@@ -14,7 +16,7 @@ public class DoggyClub_POJO {
     private final NickName_POJO nickName;
 
     public DoggyClub_POJO(boolean pedegree, int numberAwards, String breed,
-                          String[] dogSize, NickName_POJO nickName) {
+                          NickName_POJO nickName, String... dogSize) {
         this.pedegree = pedegree;
         this.numberAwards = numberAwards;
         this.breed = breed;
@@ -57,15 +59,21 @@ public class DoggyClub_POJO {
         JSONObject jsonNickName = new JSONObject("{\"nickName\":\"Demolution\"}");
 
         final DoggyClub_POJO doggyClubPojo = new DoggyClub_POJO(true, 2,
-                "shepherd", new String[]{"small", "medium", "large"},
-                new NickName_POJO("Stava"));
+                "shepherd",
+                new NickName_POJO("Stava"),
+                "small", "medium", "large");
+
+        List<String> dogSizeArray = new ArrayList<>();
+        dogSizeArray.add("small");
+        dogSizeArray.add("medium");
+        JSONArray jsonArray = new JSONArray(dogSizeArray);
 
         JSONObject jsonDoggy = new JSONObject();
         jsonDoggy.put("pedegreee", doggyClubPojo.isPedegree());
         jsonDoggy.put("numberAwards", doggyClubPojo.getNumberAwards());
         jsonDoggy.put("breed", doggyClubPojo.getBreed());
-        jsonDoggy.put("dogSize", doggyClubPojo.getDogSize());
-        jsonDoggy.put("NickName", doggyClubPojo.getNickName());
+        jsonDoggy.put("dogSize", jsonArray);
+        jsonDoggy.put("NickName", jsonNickName);
 
         System.out.println(jsonDoggy);
 

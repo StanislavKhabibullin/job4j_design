@@ -18,8 +18,9 @@ public class Analizy {
 
                     String[] mas = lin.split(" ");
                     String begin = mas[0];
-                    String end = mas[1];
+
                     if (!begin.equals("")) {
+                        String end = mas[1];
                         if ((begin.equals("200") || begin.equals("300")) && (scramb != 0)) {
                             result.add(end);
                             scramb = 0;

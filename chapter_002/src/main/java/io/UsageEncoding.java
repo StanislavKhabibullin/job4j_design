@@ -7,7 +7,7 @@ import java.util.List;
 public class UsageEncoding {
     public String readFile(String path) {
         StringBuilder builder = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(path, Charset.forName("WINDOWS-1251")))){
+        try (BufferedReader br = new BufferedReader(new FileReader(path, Charset.forName("WINDOWS-1251")))) {
             String stroka;
             while ((stroka = br.readLine()) != null) {
                 builder.append(stroka);
@@ -22,7 +22,7 @@ public class UsageEncoding {
     }
 
     public void writeDataInFile(String path, String data) {
-        try (BufferedWriter br = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251"), true))){
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251"), true))) {
             br.write(data + System.lineSeparator());
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,8 +39,8 @@ public class UsageEncoding {
                 "Новая строка 4",
                 "Новая строка 5"
         );
-        for (String s:
-             strings) {
+        for (String s
+                :strings) {
             usage.writeDataInFile(path, s);
         }
         var s = usage.readFile(path);

@@ -46,7 +46,7 @@ public class AnalizyTest {
         )) {
             var expect = reader.lines().collect(Collectors.toList());
             for (String val
-                    : expect) {
+                    :expect) {
                 result = result + val;
             }
 

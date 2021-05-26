@@ -25,7 +25,7 @@ public class Shell {
             result = stringBuilder.toString();
         }
 
-        if (path.contains("/") && !path.contains("../") && !path.equals("/")){
+        if (path.contains("/") && !path.contains("../") && !path.equals("/")) {
             result = path;
         }
     }

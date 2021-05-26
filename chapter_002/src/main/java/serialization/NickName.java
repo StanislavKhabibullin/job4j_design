@@ -25,9 +25,9 @@ public class NickName {
 
     @Override
     public String toString() {
-        return "NickName{" +
-                "nick='" + nick + '\'' +
-                ", age=" + age +
-                '}';
+        return "NickName{"
+                + "nick='" + nick + '\''
+                + ", age=" + age
+                + '}';
     }
 }

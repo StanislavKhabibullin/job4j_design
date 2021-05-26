@@ -21,7 +21,7 @@ public class ConsoleChat {
         this.answersList = readFile(path);
     }
 
-    public void run(){
+    public void run() {
         Scanner in = new Scanner(System.in);
         String res = in.nextLine();
         List<String> userLog = new ArrayList<>();
@@ -39,6 +39,8 @@ public class ConsoleChat {
                     System.out.println("User input continue");
                     scratch = true;
                     break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + res);
             }
             if (scratch) {
                 userLog.add(getBotAnswer());
@@ -79,9 +81,9 @@ public class ConsoleChat {
     }
 
     public void writeDataInFile(String path, List<String> data) {
-        try (BufferedWriter br = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251"), true))){
-            for (String stroka:
-                 data) {
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(path, Charset.forName("WINDOWS-1251"), true))) {
+            for (String stroka
+                    :data) {
                 br.write(stroka + System.lineSeparator());
             }
 

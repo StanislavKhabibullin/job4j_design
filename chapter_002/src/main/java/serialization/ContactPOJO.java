@@ -1,13 +1,13 @@
 package serialization;
 
-public class Contact_POJO {
+public class ContactPOJO {
     private final String phone;
 
     public String getPhone() {
         return phone;
     }
 
-    public Contact_POJO(String phone) {
+    public ContactPOJO(String phone) {
         this.phone = phone;
     }
 

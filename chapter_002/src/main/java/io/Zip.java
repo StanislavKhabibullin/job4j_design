@@ -51,8 +51,8 @@ public class Zip {
                         new FileOutputStream(target)
                 )
         )) {
-            for (Path path:
-                    paths) {
+            for (Path path
+                    :paths) {
                 zip.putNextEntry(new ZipEntry(path.toFile().getPath()));
                 try (BufferedInputStream out = new BufferedInputStream(
                         new FileInputStream(path.toFile())
@@ -74,11 +74,11 @@ public class Zip {
         try (FileOutputStream fos = new FileOutputStream(target);
              BufferedOutputStream buf = new BufferedOutputStream(fos);
                ZipOutputStream zip = new ZipOutputStream(buf)
-        ){
+        ) {
             ZipEntry notes = new ZipEntry(source.getPath());
             try (BufferedInputStream out = new BufferedInputStream(
                     new FileInputStream(source)
-            )){
+            )) {
 
                 zip.putNextEntry(notes);
                 zip.write(out.readAllBytes());

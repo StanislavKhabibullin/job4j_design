@@ -1,6 +1,4 @@
 package serialization;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Person_POJO_to_JSon {
+public class PersonPOJOToJSon {
     private final boolean sex;
     private final int age;
-    private final Contact_POJO contact;
+    private final ContactPOJO contact;
     private final String[] statuses;
 
-    public Person_POJO_to_JSon(boolean sex, int age, Contact_POJO contact, String... statuses) {
+    public PersonPOJOToJSon(boolean sex, int age, ContactPOJO contact, String... statuses) {
         this.sex = sex;
         this.age = age;
         this.contact = contact;
@@ -29,7 +27,7 @@ public class Person_POJO_to_JSon {
         return age;
     }
 
-    public Contact_POJO getContact() {
+    public ContactPOJO getContact() {
         return contact;
     }
 
@@ -56,8 +54,8 @@ public class Person_POJO_to_JSon {
         JSONArray jsonStatuses = new JSONArray(statuses);
 
 
-        final Person_POJO_to_JSon person = new Person_POJO_to_JSon(true, 30,
-                new Contact_POJO("+7(924)111-111-11-11"), "Worker", "Married");
+        final PersonPOJOToJSon person = new PersonPOJOToJSon(true, 30,
+                new ContactPOJO("+7(924)111-111-11-11"), "Worker", "Married");
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("sex", person.isSex());

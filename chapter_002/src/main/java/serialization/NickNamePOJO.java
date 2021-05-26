@@ -1,10 +1,10 @@
 package serialization;
 
-public class NickName_POJO {
+public class NickNamePOJO {
     private final String nick;
 
 
-    public NickName_POJO(String nicks) {
+    public NickNamePOJO(String nicks) {
         this.nick = nicks;
 
     }
@@ -17,8 +17,8 @@ public class NickName_POJO {
 
     @Override
     public String toString() {
-        return "NickName{" +
-                "nick='" + nick + '\'' +
-                '}';
+        return "NickName{"
+                + "nick='" + nick + '\''
+                + '}';
     }
 }

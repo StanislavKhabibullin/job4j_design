@@ -4,7 +4,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
 public class UsageLog4j {
-    private static final Logger LOG=LoggerFactory
+    private static final Logger LOG = LoggerFactory
                 .getLogger(UsageLog4j.class.getName());
 
 
@@ -23,8 +23,8 @@ public class UsageLog4j {
         short student = 1954;
         byte bit = 64;
         LOG.debug("User info name : {}, age : {}, weight : {},"
-                + "classletter : {}, bankSchetNumber : {}," +
-                        "hisPoliticOpinion : {}, studentsQantity : {}, bit : {}"
-                , name, age, weight, classLetter, schet, opinion, student, bit);
+                + "classletter : {}, bankSchetNumber : {},"
+                        + "hisPoliticOpinion : {}, studentsQantity : {}, bit : {}",
+                name, age, weight, classLetter, schet, opinion, student, bit);
     }
 }

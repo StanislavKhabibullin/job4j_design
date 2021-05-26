@@ -1,6 +1,4 @@
 package serialization;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,15 +6,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DoggyClub_POJO {
+public class DoggyClubPOJO {
     private final boolean pedegree;
     private final int numberAwards;
     private final String breed;
     private final String[] dogSize;
-    private final NickName_POJO nickName;
+    private final NickNamePOJO nickName;
 
-    public DoggyClub_POJO(boolean pedegree, int numberAwards, String breed,
-                          NickName_POJO nickName, String... dogSize) {
+    public DoggyClubPOJO(boolean pedegree, int numberAwards, String breed,
+                         NickNamePOJO nickName, String... dogSize) {
         this.pedegree = pedegree;
         this.numberAwards = numberAwards;
         this.breed = breed;
@@ -40,27 +38,27 @@ public class DoggyClub_POJO {
         return dogSize;
     }
 
-    public NickName_POJO getNickName() {
+    public NickNamePOJO getNickName() {
         return nickName;
     }
 
     @Override
     public String toString() {
-        return "DoggyClub{" +
-                "pedegree=" + pedegree +
-                ", numberAwards=" + numberAwards +
-                ", breed='" + breed + '\'' +
-                ", dogSizes=" + Arrays.toString(dogSize) +
-                ", nickName=" + nickName +
-                '}';
+        return "DoggyClub{"
+                + "pedegree=" + pedegree
+                + ", numberAwards=" + numberAwards
+                + ", breed='" + breed + '\''
+                + ", dogSizes=" + Arrays.toString(dogSize)
+                + ", nickName=" + nickName
+                + '}';
     }
 
     public static void main(String[] args) {
         JSONObject jsonNickName = new JSONObject("{\"nickName\":\"Demolution\"}");
 
-        final DoggyClub_POJO doggyClubPojo = new DoggyClub_POJO(true, 2,
+        final DoggyClubPOJO doggyClubPojo = new DoggyClubPOJO(true, 2,
                 "shepherd",
-                new NickName_POJO("Stava"),
+                new NickNamePOJO("Stava"),
                 "small", "medium", "large");
 
         List<String> dogSizeArray = new ArrayList<>();

@@ -51,13 +51,13 @@ public class DoggyClub {
 
     @Override
     public String toString() {
-        return "DoggyClub{" +
-                "pedegree=" + pedegree +
-                ", numberAwards=" + numberAwards +
-                ", breed='" + breed + '\'' +
-                ", dogNames=" + Arrays.toString(dogSize) +
-                ", nickName=" + nickName +
-                '}';
+        return "DoggyClub{"
+                + "pedegree=" + pedegree
+                + ", numberAwards=" + numberAwards
+                + ", breed='" + breed + '\''
+                + ", dogNames=" + Arrays.toString(dogSize)
+                + ", nickName=" + nickName
+                + '}';
     }
 
     public static void main(String[] args) throws Exception {
@@ -76,7 +76,7 @@ public class DoggyClub {
             System.out.println(xml);
         }
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        try(StringReader reader = new StringReader(xml)) {
+        try (StringReader reader = new StringReader(xml)) {
             DoggyClub doggyClub1 = (DoggyClub) unmarshaller.unmarshal(reader);
             System.out.println(doggyClub1);
 

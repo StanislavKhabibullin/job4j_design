@@ -16,13 +16,13 @@ public class EchoServer {
 
     public static void main(String[] args) {
 
-        try (ServerSocket server = new ServerSocket(9000)){   //Создаем сервер адрес - localhost, порт - 9000
+        try (ServerSocket server = new ServerSocket(9000)) {   //Создаем сервер адрес - localhost, порт - 9000
             while (!server.isClosed()) {          // сервер работает, пока его принудительно не закроют
                 Socket socket = server.accept();  //ожидаем когда к серверу обратиться клиент, программа в режиме ожидания
                 try (OutputStream out = socket.getOutputStream();  // выходной поток
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream())   // входной поток
-                     )){
+                     )) {
                     boolean excited = false;
                     boolean isRead = false;
                     String text = "";

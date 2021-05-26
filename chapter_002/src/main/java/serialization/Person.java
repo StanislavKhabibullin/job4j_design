@@ -42,18 +42,18 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "sex=" + sex +
-                ", age=" + age +
-                ", contact=" + contact +
-                ", statuses='" + Arrays.toString(statuses) + '\'' +
-                '}';
+        return "Person{"
+                + "sex=" + sex
+                + ", age=" + age
+                + ", contact=" + contact
+                + ", statuses='" + Arrays.toString(statuses) + '\''
+                + '}';
     }
 
     public static void main(String[] args) throws Exception {
         Person person =
                 new Person(true, 30,
-                        new Contact(123456,"11-111"),
+                        new Contact(123456, "11-111"),
                         "worked", "Married");
         // Получаем контекст для доступа к АПИ
         JAXBContext context = JAXBContext.newInstance(Person.class);
@@ -62,7 +62,7 @@ public class Person {
         // Указываем что нам нужно форматирование
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         String xml = "";
-        try (StringWriter writer = new StringWriter()){
+        try (StringWriter writer = new StringWriter()) {
             //Сериализуем
             marshaller.marshal(person, writer);
             xml = writer.getBuffer().toString();
@@ -70,7 +70,7 @@ public class Person {
         }
         // Для десериализации создаем десериализатор
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        try (StringReader reader = new StringReader(xml)){
+        try (StringReader reader = new StringReader(xml)) {
             //десериализуем
             Person result = (Person) unmarshaller.unmarshal(reader);
             System.out.println(result);

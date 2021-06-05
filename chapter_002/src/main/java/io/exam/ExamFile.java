@@ -14,7 +14,13 @@ public class ExamFile extends SimpleFileVisitor<Path> {
     private Path path = Paths.get(".");
 
     public static void main(String[] args) throws IOException {
-        new ExamFile().go(args);
+       ArgumentsHandler recive = new ArgumentsHandler();
+       recive.getArguments(args);
+        SearchFile searchFile = new SearchFile();
+        var iting =  searchFile.search(recive.getPath().toString(), recive.getStr());
+        FileWriterClass fileWriterClass = new FileWriterClass();
+        fileWriterClass.writeInFile(iting, recive.getFileName());
+
     }
 
     @Override

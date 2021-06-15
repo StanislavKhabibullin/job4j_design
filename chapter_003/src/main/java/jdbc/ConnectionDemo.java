@@ -9,24 +9,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionDemo {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+        public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         String url = "";
         String login = "";
         String password = "";
-     /*   String url = "jdbc:postgresql://localhost:5432/idea_db";
-        String login = "postgres";
-        String password = "A9637529669";
-        try (FileWriter fileWriter = new FileWriter("app.properties")) {
-            fileWriter.write("url = " + url + '\n');
-            fileWriter.write("login = " + login + '\n');
-            fileWriter.write("password = " + password);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-      */
         try (FileReader fileReader = new FileReader("app.properties")) {
             BufferedReader bf = new BufferedReader(fileReader);
             String mas = bf.readLine();
@@ -43,13 +32,13 @@ public class ConnectionDemo {
                }
                mas = bf.readLine();
 
-           };
+           }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (Connection connection = DriverManager.getConnection(url, login, password)){
+        try (Connection connection = DriverManager.getConnection(url, login, password)) {
             DatabaseMetaData metaData = connection.getMetaData();
             System.out.println(metaData.getUserName());
             System.out.println(metaData.getURL());

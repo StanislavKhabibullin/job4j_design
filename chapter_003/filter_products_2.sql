@@ -28,16 +28,17 @@ INSERT INTO product VALUES
 	(10, 'сырные палочки', 4, '2021-12-10', 40.12),
 	(11, 'сырное лакомство', 4, '2021-12-19', 80.12);
 
+
 select * from product
   JOIN type p on product.type_id = p.id
- where p.id=1; 
+ where p.name='сыр'; 
 
 select * from product
   where name LIKE('%морожен%'); 
 
 Запрос продуктов с истекшим сроком годности
-select * from product
-  where expired_date < '2021-06-10'; 
+SELECT * FROM product 
+	where expired_date < NOW(); 
 
 Максимальная стоимость продукта:
 SELECT product.name, price FROM product
@@ -56,8 +57,8 @@ group by p.name;
 SELECT * FROM product
 JOIN type p ON
 product.type_id = p.id
-where p.name LIKE 'мороженное' OR 
-p.name LIKE 'сыр'
+where p.name = 'молоко' OR 
+p.name = 'сыр'
 ;
 
 7

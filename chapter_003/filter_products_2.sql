@@ -47,33 +47,33 @@ price = (SELECT MAX(price) FROM product) ;
 
 
 5. Написать запрос, который выводит для каждого типа количество продуктов к нему принадлежащих. В виде имя_типа, количество
-SELECT p.name, COUNT(product.name) FROM product
-JOIN type p ON
-product.type_id = p.id
-group by p.name;
+SELECT p.name, COUNT(product.name) FROM product as p
+JOIN type as t ON
+p.type_id = t.id
+group by t.name;
 
 
 6. Написать запрос получение всех продуктов с типом "СЫР" и "МОЛОКО"
-SELECT * FROM product
-JOIN type p ON
-product.type_id = p.id
-where p.name = 'молоко' OR 
-p.name = 'сыр'
+SELECT * FROM product as p
+JOIN type as t ON
+p.type_id = t.id
+where t.name = 'молоко' OR 
+t.name = 'сыр'
 ;
 
 7
 
-SELECT p.name, COUNT(product.name) FROM product
-JOIN type p ON
-product.type_id = p.id
-group by p.name
-having COUNT(product.name) < 10;
+SELECT p.name, COUNT(product.name) FROM product as p
+JOIN type as t ON
+p.type_id = t.id
+group by t.name
+having COUNT(p.name) < 10;
 
 
 8. Вывести все продукты и их тип.
-SELECT * FROM product
-JOIN type p ON
-product.type_id = p.id;
+SELECT * FROM product as p
+JOIN type as t ON
+p.type_id = t.id;
 
 
 	

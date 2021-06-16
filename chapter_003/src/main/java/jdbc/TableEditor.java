@@ -5,6 +5,8 @@ import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 
+import static jdbc.StatementDemo.getTableScheme;
+
 public class TableEditor implements AutoCloseable {
 
     private Connection connection;
@@ -27,11 +29,12 @@ public class TableEditor implements AutoCloseable {
 
     public void createTable(String tableName) throws SQLException {
         try(Statement statement = connection.createStatement()) {
-            String sql =
+            String sql =String.format(
                     "Create table if not exists "
-                            + tableName
-                            + ";";
+                            + tableName +
+            "(id serial primary key);");
            var ast = statement.execute(sql);
+
         }
     }
 
@@ -47,9 +50,10 @@ public class TableEditor implements AutoCloseable {
     public void addColumn(String tableName, String columnName, String type) throws SQLException {
         try(Statement statement = connection.createStatement()) {
             String sql = String.format(
-                    "ALTER TABLE " + tableName + "ADD COLUMN" + columnName + type
+                    "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + type + ";"
             );
             statement.execute(sql);
+            System.out.println(getScheme(tableName));
         }
     }
 
@@ -97,9 +101,10 @@ public class TableEditor implements AutoCloseable {
         Properties properties1 = new Properties();
         properties1.load(in);
         TableEditor editor = new TableEditor(properties1);
-        editor.createTable("testTablik");
-        editor.addColumn("testTablik", "name", "varchar(20)");
-        System.out.println(editor.getScheme("testTablik"));
+        String tableName = "terst3";
+        editor.createTable(tableName);
+        editor.addColumn(tableName, "name", "varchar(20)");
+        System.out.println(editor.getScheme(tableName));
 
 
     }

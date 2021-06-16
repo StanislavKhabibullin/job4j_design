@@ -50,10 +50,8 @@ public class ArgumentsHandler {
                     }
                 }
         );
-        if (poisk.equals("mask")) {
-            var mik = str.split("\\.");
-            str = "." + mik[1];
-        }
+        PredicateSearch search = new PredicateSearch();
+        str = search.poisk(poisk, str);
     }
 
 }

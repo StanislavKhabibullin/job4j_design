@@ -17,6 +17,11 @@ public class TableEditor implements AutoCloseable {
         this.properties = properties;
         initConnection();
     }
+    private void zapros(String sql) throws SQLException {
+        try(Statement statement = connection.createStatement()) {
+            var ast = statement.execute(sql);
+        }
+    }
 
     private void initConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
@@ -28,51 +33,39 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void createTable(String tableName) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
-            String sql =String.format(
-                    "Create table if not exists "
-                            + tableName +
-            "(id serial primary key);");
-           var ast = statement.execute(sql);
-
-        }
+        String sql =String.format(
+                "Create table if not exists "
+                        + tableName +
+                        "(id serial primary key);");
+        zapros(sql);
     }
 
     public void dropTable(String tableName) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
-            String sql = String.format(
-                    "DROP table " + tableName
-            );
-            statement.execute(sql);
-        }
+        String sql = String.format(
+                "DROP table " + tableName
+        );
+        zapros(sql);
     }
 
     public void addColumn(String tableName, String columnName, String type) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
-            String sql = String.format(
-                    "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + type + ";"
-            );
-            statement.execute(sql);
-            System.out.println(getScheme(tableName));
-        }
+        String sql = String.format(
+                "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + type + ";"
+        );
+        zapros(sql);
     }
 
     public void dropColumn(String tableName, String columnName) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
-            String sql = String.format(
-                    "ALTER TABLE " + tableName + "DROP COLUMN" + columnName
-            );
-            statement.execute(sql);
-        }
+        String sql = String.format(
+                "ALTER TABLE " + tableName + "DROP COLUMN" + columnName
+        );
+        zapros(sql);
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
-            String sql = String.format(
-                    "ALTER TABLE " + tableName + "REnAMe COLUMN" + columnName + " TO " + newColumnName
-            );
-            statement.execute(sql);
-        }
+        String sql = String.format(
+                "ALTER TABLE " + tableName + "REnAMe COLUMN" + columnName + " TO " + newColumnName
+        );
+        zapros(sql);
     }
 
     public String getScheme(String tableName) throws SQLException {
@@ -101,7 +94,7 @@ public class TableEditor implements AutoCloseable {
         Properties properties1 = new Properties();
         properties1.load(in);
         TableEditor editor = new TableEditor(properties1);
-        String tableName = "terst3";
+        String tableName = "terst5";
         editor.createTable(tableName);
         editor.addColumn(tableName, "name", "varchar(20)");
         System.out.println(editor.getScheme(tableName));

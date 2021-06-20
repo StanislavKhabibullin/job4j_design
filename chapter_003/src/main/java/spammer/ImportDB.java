@@ -26,6 +26,21 @@ public class ImportDB {
         }
         return users;
     }
+
+    public void createTable(Connection connect) {
+        try (Statement statement = connect.createStatement()) {
+            String sql = String.format(
+                    "Create table if not exists users(%s,%s,%s);",
+                    "id serial primary key",
+                    "name varchar(50)",
+                    "email varchar(50)"
+            );
+            statement.execute(sql);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
     public void save(List<User> users) throws ClassNotFoundException, SQLException {
         Class.forName(cfg.getProperty("jdbc.driver"));
         try (Connection cn = DriverManager.getConnection(
@@ -33,18 +48,10 @@ public class ImportDB {
                 cfg.getProperty("jdbc.username"),
                 cfg.getProperty("jdbc.password")
         )) {
-            try(Statement statement = cn.createStatement()) {
-                String sql = String.format(
-                        "Create table if not exists users(%s,%s,%s);",
-                        "id serial primary key",
-                        "name varchar(50)",
-                        "email varchar(50)"
-                );
-                statement.execute(sql);
-            }
-            for (User user:
-                 users) {
-                try (PreparedStatement statement = cn.prepareStatement("INSERT into users(name, email) VALUES(?,?)")){
+           createTable(cn);
+            for (User user
+                    :users) {
+                try (PreparedStatement statement = cn.prepareStatement("INSERT into users(name, email) VALUES(?,?)")) {
                     statement.setString(1, user.name);
                     statement.setString(2, user.email);
                     statement.execute();

@@ -18,7 +18,7 @@ public class TableEditor implements AutoCloseable {
         initConnection();
     }
     private void zapros(String sql) throws SQLException {
-        try(Statement statement = connection.createStatement()) {
+        try (Statement statement = connection.createStatement()) {
             var ast = statement.execute(sql);
         }
     }
@@ -33,10 +33,10 @@ public class TableEditor implements AutoCloseable {
     }
 
     public void createTable(String tableName) throws SQLException {
-        String sql =String.format(
+        String sql = String.format(
                 "Create table if not exists "
-                        + tableName +
-                        "(id serial primary key);");
+                        + tableName
+                        + "(id serial primary key);");
         zapros(sql);
     }
 

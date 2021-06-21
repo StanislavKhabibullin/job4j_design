@@ -41,7 +41,7 @@ public class StatementDemo {
     public static String getTableScheme(Connection connection, String tableName) throws SQLException {
         StringBuilder scheme = new StringBuilder();
         DatabaseMetaData metaData = connection.getMetaData();
-        try(ResultSet columns = metaData.getColumns(null, null,
+        try (ResultSet columns = metaData.getColumns(null, null,
                 tableName, null)) {
             scheme.append(String.format("%-15s %-15s%n", "column", "type"));
             while (columns.next()) {
@@ -54,8 +54,8 @@ public class StatementDemo {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        try(Connection connection = getConnection())  {
-            try(Statement statement = connection.createStatement()) {
+        try (Connection connection = getConnection())  {
+            try (Statement statement = connection.createStatement()) {
                 String sql = String.format(
                         "Create table if not exists demo_table(%s,%s);",
                         "id serial primary key",

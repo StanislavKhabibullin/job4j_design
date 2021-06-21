@@ -24,7 +24,7 @@ public class PrepareStatementDemo {
         String login = "postgres";
         String password = "A9637529669";
         connection = DriverManager.getConnection(url, login, password);
-        try(Statement statement = connection.createStatement()) {
+        try (Statement statement = connection.createStatement()) {
             String sql = String.format(
                     "Create table if not exists cities_2(%s,%s,%s);",
                     "id serial primary key",
@@ -37,7 +37,7 @@ public class PrepareStatementDemo {
     }
 
     public void insert(City city) throws SQLException {
-        try(PreparedStatement statement = connection.prepareStatement(
+        try (PreparedStatement statement = connection.prepareStatement(
                 "insert into cities_2(name, population) values (?, ?)"
         )) {
             statement.setString(1, city.getName());
@@ -96,8 +96,8 @@ public class PrepareStatementDemo {
         test.delete(1);
         test.update(city);
         List<City> cityList = test.findAll();
-        for (City town:
-             cityList) {
+        for (City town
+                :cityList) {
             System.out.println(town);
         }
 

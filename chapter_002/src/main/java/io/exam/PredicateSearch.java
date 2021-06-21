@@ -1,20 +1,27 @@
 package io.exam;
 
+import java.nio.file.Path;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class PredicateSearch {
-public String poisk(String varik, String meaning) {
+public boolean poisk(Path file, String varik, String meaning) {
     if (varik.equals("mask")) {
         var mik = meaning.split("\\.");
         meaning = "." + mik[1];
-        return meaning;
+        var fileName = file.toAbsolutePath().toString();
+        return fileName.contains(meaning);
     }
     if (varik.equals("fileName")) {
-        return meaning;
+        var fileName = file.getFileName().toString();
+        var result = fileName.equals(meaning);
+        return result;
     }
     if (varik.equals("RegEx")) {
-        var mik = meaning.split("\\.");
-        meaning = "." + mik[1];
-        return meaning;
+        Pattern pattern = Pattern.compile(meaning);
+        Matcher matcher = pattern.matcher(file.toAbsolutePath().toString());
+        return matcher.find();
     }
-    return null;
+    return false;
 }
 }

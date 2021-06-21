@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFile  extends SimpleFileVisitor<Path> {
-    public String maska_poiska = "";
+    public String maskaPoiska = "";
+    public String meaning = "";
     public ArrayList<Path> mas = new ArrayList<>();
+
     
 
-    public SearchFile(String maska_poiska) {
-        this.maska_poiska = maska_poiska;
+    public SearchFile(String maskaPoiska, String meaning) {
+        this.meaning = meaning;
+        this.maskaPoiska = maskaPoiska;
     }
 
     
@@ -22,23 +25,25 @@ public class SearchFile  extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-
-        if (file.toAbsolutePath().toString().contains(maska_poiska)) {
+        PredicateSearch predicateSearch = new PredicateSearch();
+        if (predicateSearch.poisk(file, maskaPoiska, meaning)) {
             System.out.println(file.toAbsolutePath());
             mas.add(file.toAbsolutePath());
         }
         return super.visitFile(file, attrs);
     }
 
-    public List<Path> search(String path, String mask) throws IOException {
-        SearchFile poisk = new SearchFile(mask);
+    public List<Path> search(String path, String mask, String meaning) throws IOException {
+        SearchFile poisk = new SearchFile(mask, meaning);
         Files.walkFileTree(Paths.get(path), poisk);
         return poisk.mas;
     }
 
     public static void main(String[] args) throws IOException {
+
+
         SearchFile searchFile = new SearchFile();
-        var iting =  searchFile.search(".", "pom.xml");
+        var iting =  searchFile.search(".", "RegEx", "pom.xml");
         FileWriterClass fileWriterClass = new FileWriterClass();
         fileWriterClass.writeInFile(iting, "testik_rez.txt");
     }

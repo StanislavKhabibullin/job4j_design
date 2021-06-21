@@ -50,8 +50,7 @@ public class ArgumentsHandler {
                     }
                 }
         );
-        PredicateSearch search = new PredicateSearch();
-        str = search.poisk(poisk, str);
+
     }
 
 }

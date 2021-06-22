@@ -26,7 +26,7 @@ public class SearchFile  extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         PredicateSearch predicateSearch = new PredicateSearch();
-        if (predicateSearch.poisk(file, maskaPoiska, meaning)) {
+        if (predicateSearch.poisk(file, maskaPoiska, meaning) != null) {
             System.out.println(file.toAbsolutePath());
             mas.add(file.toAbsolutePath());
         }

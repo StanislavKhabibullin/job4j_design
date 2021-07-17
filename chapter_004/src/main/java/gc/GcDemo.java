@@ -16,6 +16,7 @@ public class GcDemo {
     }
 
     public static void main(String[] args) {
+
         info();
         for (int i = 0; i < 10000; i++) {
             new Person(i, "N" + i);

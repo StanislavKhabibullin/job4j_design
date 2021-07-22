@@ -22,17 +22,21 @@ public class GcUser {
     public static void main(String[] args) {
         System.out.println("свободная память " + (Runtime.getRuntime().freeMemory()));
         info();
+        String s = null;
+        User userEmpty = new User();
         User user1 = new User(0, 0);
         System.out.println("Первоначальный размер объекта User " + String.valueOf(sizeOf(user1)));
         for (int i = 0; i < 15000; i++) {
           user1 = new User( 98765432 + i, 153.4 + i);
            System.out.println("размер объекта User " + String.valueOf(sizeOf(user1)));
         }
-
-
         info();
+        Integer bigint = 0;
+       // int tror = Integer.parseInt(null);
+
         System.out.println("свободная память  в конце программаы " + (Runtime.getRuntime().freeMemory()));
-       // System.out.println(user1);
+        System.out.println("Вес пустого объекта - " + sizeOf(userEmpty));
+        System.out.println("Просто путой объект - " + userEmpty);
 
     }
 }

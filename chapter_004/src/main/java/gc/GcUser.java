@@ -33,10 +33,11 @@ public class GcUser {
         info();
         Integer bigint = 0;
        // int tror = Integer.parseInt(null);
+        EmptyObject testObject = new EmptyObject();
 
         System.out.println("свободная память  в конце программаы " + (Runtime.getRuntime().freeMemory()));
-        System.out.println("Вес пустого объекта - " + sizeOf(userEmpty));
-        System.out.println("Просто путой объект - " + userEmpty);
+        System.out.println("Вес пустого объекта - " + sizeOf(testObject));
+        System.out.println("Просто путой объект - " + testObject);
 
     }
 }

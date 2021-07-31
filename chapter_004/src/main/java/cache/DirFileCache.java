@@ -9,14 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DirFileCache extends AbstractCache<String, String> {
+    private final String cacheDir;
 
     public DirFileCache(String cacheDir) {
         this.cacheDir = cacheDir;
     }
-
-
-    private final String cacheDir;
-
 
   @Override
     public void put(String key, String value) throws FileNotFoundException {
@@ -24,7 +21,6 @@ public class DirFileCache extends AbstractCache<String, String> {
             fw.println(value);
         }
     }
-
 
     @Override
     public String get(String key) throws IOException {

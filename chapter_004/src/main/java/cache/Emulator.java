@@ -24,7 +24,9 @@ public class Emulator {
 
     public static void main(String[] args) throws IOException {
         showMenu();
-        DirFileCache test = new DirFileCache("C:\\projects\\job4j_design\\chapter_004");
+        String initialDirectory = "C:\\projects\\job4j_design\\chapter_004";
+        AbstractCache<String, String> abstractCache = new DirFileCache(initialDirectory);
+       // DirFileCache test = new DirFileCache(initialDirectory);
         Scanner in = new Scanner(System.in);
         Scanner inStr = new Scanner(System.in);
         String fileName = null;
@@ -34,7 +36,8 @@ public class Emulator {
                 case 1:
                     System.out.println("Input cache directory");
                     String dir = inStr.nextLine();
-                    test = new DirFileCache(dir);
+                   // test = new DirFileCache(dir);
+                    abstractCache = new DirFileCache(dir);
 
                 case 2:
                     System.out.println("Input fileName");
@@ -44,12 +47,14 @@ public class Emulator {
                 case 3:
                     System.out.println("input content for " + fileName);
                     String content = inStr.nextLine();
-                    test.put(fileName, content);
+                   // test.put(fileName, content);
+                    abstractCache.put(fileName, content);
                     break;
 
                 case 4:
                     System.out.println("content from " + fileName + " is:");
-                    String result = test.get(fileName);
+                   // String result = test.get(fileName);
+                    String result = abstractCache.load(fileName);
                     System.out.println(result);
                     break;
                 default:

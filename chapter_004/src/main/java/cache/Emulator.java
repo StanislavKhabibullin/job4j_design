@@ -1,5 +1,6 @@
 package cache;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,9 +36,9 @@ public class Emulator {
             switch (choice) {
                 case 1:
                     System.out.println("Input cache directory");
-                    String dir = inStr.nextLine();
+                    initialDirectory = inStr.nextLine();
                    // test = new DirFileCache(dir);
-                    abstractCache = new DirFileCache(dir);
+                    abstractCache = new DirFileCache(initialDirectory);
 
                 case 2:
                     System.out.println("Input fileName");
@@ -48,13 +49,13 @@ public class Emulator {
                     System.out.println("input content for " + fileName);
                     String content = inStr.nextLine();
                    // test.put(fileName, content);
-                    abstractCache.put(fileName, content);
+                    abstractCache.put(initialDirectory + File.separator + fileName, content);
                     break;
 
                 case 4:
                     System.out.println("content from " + fileName + " is:");
                    // String result = test.get(fileName);
-                    String result = abstractCache.load(fileName);
+                    String result = abstractCache.load(initialDirectory + File.separator + fileName);
                     System.out.println(result);
                     break;
                 default:

@@ -15,12 +15,15 @@ public class DirFileCache extends AbstractCache<String, String> {
     @Override
     protected String load(String key) throws IOException {
         StringBuilder sb = new StringBuilder();
-        try (FileReader fr = new FileReader(key)) {
+        sb.append(cache.get(key).get());
+       /* try (FileReader fr = new FileReader(key)) {
             int i = -1;
             while ((i = fr.read()) !=-1){
                 sb.append((char) i);
             }
         }
+
+        */
         return String.valueOf(sb);
     }
 

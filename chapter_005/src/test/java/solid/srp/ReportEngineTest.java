@@ -16,7 +16,7 @@ public class ReportEngineTest {
         Employee worker2 = new Employee("Ivan", now, now, 105);
         store.add(worker);
         store.add(worker2);
-        ReportForHr engine = new ReportEngine(store);
+        ReportForHRClass engine = new ReportForHRClass(store);
         StringBuilder result = new StringBuilder();
         result.append("Name; Salary")
                 .append(System.lineSeparator())
@@ -24,7 +24,7 @@ public class ReportEngineTest {
                 .append(worker2.getSalary()).append(";")
                 .append(worker.getName()).append(";")
                 .append(worker.getSalary()).append(";");
-        assertThat(engine.generateForHr(ter -> true), is(result.toString()));
+        assertThat(engine.generate(ter -> true), is(result.toString()));
     }
 
 
@@ -34,7 +34,7 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportForAccounters engine = new ReportEngine(store);
+        ReportForAccountersClass engine = new ReportForAccountersClass(store);
         StringBuilder result = new StringBuilder();
         result.append("Name; Hired; Fired; FixedSalary")
                 .append(System.lineSeparator())
@@ -42,7 +42,7 @@ public class ReportEngineTest {
                 .append(worker.getHired()).append(";")
                 .append(worker.getHired()).append(";")
                 .append(worker.getSalary()).append(";");
-        assertThat(engine.generateAccount(ter -> true), is(result.toString()));
+        assertThat(engine.generate(ter -> true), is(result.toString()));
     }
 
     @Test

@@ -16,7 +16,7 @@ public class ReportEngineTest {
         Employee worker2 = new Employee("Ivan", now, now, 105);
         store.add(worker);
         store.add(worker2);
-        ReportForHRClass engine = new ReportForHRClass(store);
+        Report engine = new ReportForHRClass(store);
         StringBuilder result = new StringBuilder();
         result.append("Name; Salary")
                 .append(System.lineSeparator())
@@ -34,14 +34,35 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        ReportForAccountersClass engine = new ReportForAccountersClass(store);
+        Report engine = new ReportForAccountersClass(store);
         StringBuilder result = new StringBuilder();
         result.append("Name; Hired; Fired; FixedSalary")
                 .append(System.lineSeparator())
                 .append(worker.getName()).append(";")
                 .append(worker.getHired()).append(";")
                 .append(worker.getHired()).append(";")
-                .append(worker.getSalary()).append(";");
+                .append(worker.getSalary()).append("$;");
+        assertThat(engine.generate(ter -> true), is(result.toString()));
+    }
+
+    @Test
+    public void whenProgrammerGenerated() {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        store.add(worker);
+        Report engine = new ReportForProgrammerClass(store);
+        StringBuilder result = new StringBuilder();
+        result.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \n" +
+                " \"http://www.w3.org/TR/html4/strict.dtd\">")
+                .append(System.lineSeparator())
+                .append("<h1>Name; Hired; Fired; FixedSalary</h1>")
+                .append(System.lineSeparator())
+                .append("<p>")
+                .append(worker.getName()).append(";")
+                .append(worker.getHired()).append(";")
+                .append(worker.getHired()).append(";")
+                .append(worker.getSalary()).append("$;</p>");
         assertThat(engine.generate(ter -> true), is(result.toString()));
     }
 

@@ -1,13 +1,35 @@
 package solid.srp;
 
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Objects;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.File;
+import java.io.Serializable;
+import java.io.StringWriter;
+import java.util.*;
 
-public class Employee {
+
+@XmlRootElement(name = "Employee")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Employee implements Serializable {
+
+    public Employee() {
+    }
+
+    @XmlAttribute
     private String name;
+
+    @XmlAttribute
     private Calendar hired;
+
+    @XmlAttribute
     private Calendar fired;
+
+    @XmlAttribute
     private double salary;
 
     public Employee(String name, Calendar hired, Calendar fired, double salary) {
@@ -62,4 +84,38 @@ public class Employee {
         return Objects.hash(getName());
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", hired=" + hired +
+                ", fired=" + fired +
+                ", salary=" + salary +
+                '}';
+    }
+
+    public static void main(String[] args) throws JAXBException {
+        Calendar now = Calendar.getInstance();
+        final Employee person = new Employee("Rick", now, now, 155);
+        final Employee person1 = new Employee("Morty", now, now, 551);
+        JAXBContext context = JAXBContext.newInstance(Employee.class);
+        List<Employee> employeeList = new ArrayList<>();
+        employeeList.add(person);
+        employeeList.add(person1);
+
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        File resultFile = new File("./bookJAXB.xml");
+
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(person,
+                    resultFile);
+            marshaller.marshal(person1,
+                    resultFile);
+            String result = writer.getBuffer().toString();
+            System.out.println(result);
+        } catch (Exception e) {
+
+        }
+    }
 }

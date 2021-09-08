@@ -22,8 +22,10 @@ public class ReportEngineTest {
                 .append(System.lineSeparator())
                 .append(worker2.getName()).append(";")
                 .append(worker2.getSalary()).append(";")
+                .append(System.lineSeparator())
                 .append(worker.getName()).append(";")
-                .append(worker.getSalary()).append(";");
+                .append(worker.getSalary()).append(";")
+        .append(System.lineSeparator());
         assertThat(engine.generate(ter -> true), is(result.toString()));
     }
 

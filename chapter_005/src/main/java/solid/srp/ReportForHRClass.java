@@ -1,5 +1,9 @@
 package solid.srp;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -28,8 +32,22 @@ public class ReportForHRClass implements Report {
         for (Employee employee
                 :result) {
             text.append(employee.getName()).append(";")
-                    .append(employee.getSalary()).append(";");
+                    .append(employee.getSalary()).append(";")
+            .append(System.lineSeparator());
         }
         return String.valueOf(text);
+    }
+
+    public static void main(String[] args) {
+        MemStore store = new MemStore();
+        Calendar now = Calendar.getInstance();
+        Employee worker = new Employee("Ivan", now, now, 100);
+        Employee worker2 = new Employee("Ivan", now, now, 105);
+        store.add(worker);
+        store.add(worker2);
+        Report engine = new ReportForHRClass(store);
+        System.out.println(engine.generate(tr -> true));
+        final Gson gson = new GsonBuilder().create();
+        System.out.println(gson.toJson(worker));
     }
 }

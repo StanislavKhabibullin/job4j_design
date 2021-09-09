@@ -59,7 +59,7 @@ public class ReportJSONformat implements Report {
             }
         } catch (EOFException e) {
 
-        } catch (IOException|ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return resultAfterSeri;

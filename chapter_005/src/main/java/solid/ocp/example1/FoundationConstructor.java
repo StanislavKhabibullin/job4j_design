@@ -1,5 +1,5 @@
 package solid.ocp.example1;
 
-public interface foudationConstructor {
+public interface FoundationConstructor {
     Integer concreteQuantity(Integer numberOfFloor);
 }

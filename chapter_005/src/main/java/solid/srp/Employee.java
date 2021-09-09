@@ -73,8 +73,12 @@ public class Employee implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Employee)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Employee)) {
+            return false;
+        }
         Employee employee = (Employee) o;
         return  Objects.equals(getName(), employee.getName());
     }
@@ -86,12 +90,12 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", hired=" + hired +
-                ", fired=" + fired +
-                ", salary=" + salary +
-                '}';
+        return "Employee{"
+                + "name='" + name + '\''
+                + ", hired=" + hired
+                + ", fired=" + fired
+                + ", salary=" + salary
+                + '}';
     }
 
     public static void main(String[] args) throws JAXBException {
@@ -115,7 +119,7 @@ public class Employee implements Serializable {
             String result = writer.getBuffer().toString();
             System.out.println(result);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 }

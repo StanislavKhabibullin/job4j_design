@@ -17,16 +17,15 @@ public class ReportEngineTest {
         store.add(worker);
         store.add(worker2);
         Report engine = new ReportForHRClass(store);
-        StringBuilder result = new StringBuilder();
-        result.append("Name; Salary")
-                .append(System.lineSeparator())
-                .append(worker2.getName()).append(";")
-                .append(worker2.getSalary()).append(";")
-                .append(System.lineSeparator())
-                .append(worker.getName()).append(";")
-                .append(worker.getSalary()).append(";")
-        .append(System.lineSeparator());
-        assertThat(engine.generate(ter -> true), is(result.toString()));
+        String result = "Name; Salary"
+                + System.lineSeparator()
+                + worker2.getName() + ";"
+                + worker2.getSalary() + ";"
+                + System.lineSeparator()
+                + worker.getName() + ";"
+                + worker.getSalary() + ";"
+                + System.lineSeparator();
+        assertThat(engine.generate(ter -> true), is(result));
     }
 
 
@@ -55,8 +54,8 @@ public class ReportEngineTest {
         store.add(worker);
         Report engine = new ReportForProgrammerClass(store);
         StringBuilder result = new StringBuilder();
-        result.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \n" +
-                " \"http://www.w3.org/TR/html4/strict.dtd\">")
+        result.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \n"
+                + " \"http://www.w3.org/TR/html4/strict.dtd\">")
                 .append(System.lineSeparator())
                 .append("<h1>Name; Hired; Fired; FixedSalary</h1>")
                 .append(System.lineSeparator())

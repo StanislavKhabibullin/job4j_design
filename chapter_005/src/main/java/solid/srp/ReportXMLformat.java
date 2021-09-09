@@ -28,28 +28,26 @@ public class ReportXMLformat implements Report, Serialisator {
 
     @Override
     public String serialisat(List<Employee> list) throws JAXBException {
-        StringBuilder text = new StringBuilder();
 
-            File resultFile = new File("./bookJAXB.xml");
-            xtemp = resultFile;
+        xtemp = new File("./bookJAXB.xml");
             Employees mas = new Employees(list);
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         marshaller.marshal(mas, xtemp);
 
-        return String.valueOf(text);
+        return null;
     }
 
     @Override
     public List<Employee> deserialisat() throws JAXBException {
-        List<Employee> resultAfterSeri = new ArrayList<>();
+        List<Employee> resultAfterSeri;
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Employees result = (Employees) unmarshaller.unmarshal(xtemp);
         resultAfterSeri = result.getEmployees();
-        for (Employee empl:
-             resultAfterSeri) {
+        for (Employee empl
+                : resultAfterSeri) {
             System.out.println(empl);
         }
 
@@ -81,7 +79,7 @@ public class ReportXMLformat implements Report, Serialisator {
     }
 
     @XmlRootElement(name = "Employees")
-    public static class Employees{
+    public static class Employees {
         @XmlElement(name = "Employer")
         private List<Employee> employees;
 

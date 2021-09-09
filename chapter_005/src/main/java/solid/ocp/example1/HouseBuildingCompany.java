@@ -2,7 +2,7 @@ package solid.ocp.example1;
 
 import java.util.function.Predicate;
 
-public class HouseBuildingCompany implements foudationConstructor, CorrectFoundationConstructor {
+public class HouseBuildingCompany implements FoundationConstructor, CorrectFoundationConstructor {
     private Integer numberOfFloorBuilding;
     private BuildingType type;
 
@@ -26,7 +26,7 @@ public class HouseBuildingCompany implements foudationConstructor, CorrectFounda
     }
 
     @Override
-    public Integer CorrectConcreteQuantity(Predicate<BuildingType> buildingTypePredicate, Integer numberOfFloor) {
+    public Integer correctConcreteQuantity(Predicate<BuildingType> buildingTypePredicate, Integer numberOfFloor) {
        if (buildingTypePredicate.test(type)) {
            return numberOfFloorBuilding * 2000;
        }

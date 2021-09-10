@@ -39,6 +39,7 @@ public class ReportJSONformat implements Report {
 
                 */
                 var lib = gson.toJson(list);
+                text.append(lib);
                 ois.writeObject(lib);
 
             }

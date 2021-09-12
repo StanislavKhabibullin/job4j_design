@@ -16,19 +16,13 @@ public class ControllQuality {
     }
 
     public Food handler(Food goods) {
-        LocalDate now = LocalDate.now();
-        var duration = (double) ChronoUnit.DAYS.between(goods.getCreateDate(), goods.getExpiryDate());
-        var durationFromNow = (double) ChronoUnit.DAYS.between(now, goods.getExpiryDate());
-        int res = Integer.valueOf((int) (100 - (durationFromNow / duration) * 100));
-        System.out.println(res);
-        if ((res <= 25) & (res > 0)) {
+        if (warehouse.accept(goods)) {
             warehouse.addWarehouse(goods);
-        } else if ((res > 25) & (res <= 75)) {
+        }
+        if (shop.accept(goods)) {
             shop.addShop(goods);
-        } else if ((res > 75) & (res < 100)) {
-            goods.setDiscount((float) 0.5);
-            shop.addShop(goods);
-        } else {
+        }
+        if (trash.accept(goods)) {
             trash.addTrash(goods);
         }
         return goods;

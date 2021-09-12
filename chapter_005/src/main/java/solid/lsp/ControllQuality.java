@@ -5,9 +5,16 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class ControllQuality {
-    Warehouse warehouse = new Warehouse();
-    Shop shop = new Shop();
-    Trash trash = new Trash();
+    Warehouse warehouse;
+    Shop shop;
+    Trash trash;
+
+    public ControllQuality(Warehouse warehouse, Shop shop, Trash trash) {
+        this.warehouse = warehouse;
+        this.shop = shop;
+        this.trash = trash;
+    }
+
     public Food handler(Food goods) {
         LocalDate now = LocalDate.now();
         var duration = (double) ChronoUnit.DAYS.between(goods.getCreateDate(), goods.getExpiryDate());
@@ -28,6 +35,9 @@ public class ControllQuality {
     }
 
     public static void main(String[] args) {
+        Warehouse warehouse1 = new Warehouse();
+        Shop shop1 = new Shop();
+        Trash trash1 = new Trash();
         System.out.println(LocalDate.now());
         Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
                 LocalDate.of(2021, 9, 10), 100, 0 );
@@ -35,7 +45,7 @@ public class ControllQuality {
                 LocalDate.of(2021, 9, 10), 150, 0 );
         Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 13),
                 LocalDate.of(2021, 9, 10), 120, 0 );
-        ControllQuality rez = new ControllQuality();
+        ControllQuality rez = new ControllQuality(warehouse1, shop1, trash1);
         rez.handler(blackBread);
         rez.handler(whiteBread);
         rez.handler(bunBread);

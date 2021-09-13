@@ -8,7 +8,8 @@ import java.util.List;
 public class Shop implements Store {
    private List<Food> goodsOnShelves = new ArrayList<>();
 
-   public void addShop(Food food) {
+   @Override
+   public void addStore(Food food) {
        goodsOnShelves.add(food);
    }
 
@@ -27,8 +28,17 @@ public class Shop implements Store {
         return false;
     }
 
-    public List<Food> getGoodsOnShelves() {
+    @Override
+    public List<Food> getFromStore() {
         return goodsOnShelves;
+    }
+
+    @Override
+    public void print() {
+        for (Food shopFood:
+                goodsOnShelves) {
+            System.out.println("on the shop shelves - " + shopFood);
+        }
     }
 
     public void setGoodsOnShelves(List<Food> goodsOnShelves) {

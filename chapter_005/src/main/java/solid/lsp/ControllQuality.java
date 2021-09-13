@@ -3,59 +3,48 @@ package solid.lsp;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class ControllQuality {
-    Warehouse warehouse;
-    Shop shop;
-    Trash trash;
 
-    public ControllQuality(Warehouse warehouse, Shop shop, Trash trash) {
-        this.warehouse = warehouse;
-        this.shop = shop;
-        this.trash = trash;
-    }
+   Store warehouse = new Warehouse();
+   Store shop = new Shop();
+   Store trash = new Trash();
+
+
 
     public Food handler(Food goods) {
         if (warehouse.accept(goods)) {
-            warehouse.addWarehouse(goods);
+            warehouse.addStore(goods);
         }
         if (shop.accept(goods)) {
-            shop.addShop(goods);
+            shop.addStore(goods);
         }
         if (trash.accept(goods)) {
-            trash.addTrash(goods);
+            trash.addStore(goods);
         }
         return goods;
     }
 
+    public void printer() {
+        warehouse.print();
+        shop.print();
+        trash.print();
+    }
+
     public static void main(String[] args) {
-        Warehouse warehouse1 = new Warehouse();
-        Shop shop1 = new Shop();
-        Trash trash1 = new Trash();
+
         System.out.println(LocalDate.now());
         Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
                 LocalDate.of(2021, 9, 10), 100, 0 );
         Bread whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
                 LocalDate.of(2021, 9, 10), 150, 0 );
-        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 13),
+        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 14),
                 LocalDate.of(2021, 9, 10), 120, 0 );
-        ControllQuality rez = new ControllQuality(warehouse1, shop1, trash1);
+        ControllQuality rez = new ControllQuality();
         rez.handler(blackBread);
         rez.handler(whiteBread);
         rez.handler(bunBread);
-        for (Food shopFood:
-             rez.shop.getGoodsOnShelves()) {
-            System.out.println("on the shop shelves - " + shopFood);
-        }
-
-        for (Food trashFood:
-                rez.trash.goodsInTrashBucket) {
-            System.out.println("in the trash bucket - " + trashFood);
-        }
-
-        for (Food warehouseFood:
-        rez.warehouse.goodsInStock) {
-            System.out.println("in to warehouse - " + warehouseFood);
-        }
+        rez.printer();
     }
 }

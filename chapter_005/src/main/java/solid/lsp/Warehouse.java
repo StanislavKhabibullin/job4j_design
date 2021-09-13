@@ -8,8 +8,22 @@ import java.util.List;
 public class Warehouse implements Store {
     List<Food> goodsInStock = new ArrayList<>();
 
-    public void addWarehouse(Food food) {
+    @Override
+    public void addStore(Food food) {
         goodsInStock.add(food);
+    }
+
+    @Override
+    public List<Food> getFromStore() {
+        return goodsInStock;
+    }
+
+    @Override
+    public void print() {
+        for (Food warehouseFood:
+                goodsInStock) {
+            System.out.println("in to warehouse - " + warehouseFood);
+        }
     }
 
     @Override

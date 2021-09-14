@@ -10,6 +10,10 @@ import java.util.List;
 public class Trash implements Store {
     List<Food> goodsInTrashBucket = new ArrayList<>();
 
+    public Trash() {
+
+    }
+
     @Override
     public void addStore(Food food) {
         goodsInTrashBucket.add(food);

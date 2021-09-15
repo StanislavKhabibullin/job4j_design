@@ -20,8 +20,8 @@ public class Warehouse implements Store {
 
     @Override
     public void print() {
-        for (Food warehouseFood:
-                goodsInStock) {
+        for (Food warehouseFood
+                :goodsInStock) {
             System.out.println("in to warehouse - " + warehouseFood);
         }
     }

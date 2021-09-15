@@ -1,4 +1,4 @@
-package solid.lsp.carParking;
+package solid.lsp.carparking;
 
 import java.util.List;
 

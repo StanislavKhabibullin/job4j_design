@@ -1,7 +1,6 @@
-package solid.lsp.carParking;
+package solid.lsp.carparking;
 
 import java.util.Hashtable;
-import java.util.List;
 
 public interface ParkingCapacity {
     int carCapacity(Hashtable<Integer, Boolean> carPlaces);  //возвращает количество мест парковки для легковых авто

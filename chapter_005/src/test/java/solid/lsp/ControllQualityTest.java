@@ -21,17 +21,21 @@ public class ControllQualityTest {
         storeList1.add(shop);
         storeList1.add(trash);
         Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0 );
+                LocalDate.of(2021, 9, 10), 100, 0);
         Bread whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
-                LocalDate.of(2021, 9, 10), 150, 0 );
+                LocalDate.of(2021, 9, 10), 150, 0);
         Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 14),
-                LocalDate.of(2021, 9, 10), 120, 0 );
+                LocalDate.of(2021, 9, 10), 120, 0);
         ControllQuality rez = new ControllQuality(storeList1);
         rez.handler(blackBread);
         rez.handler(whiteBread);
         rez.handler(bunBread);
-        Food res = trash.getFromStore().get(0);
-        assertThat(res, is(whiteBread));
+        Food res1 = trash.getFromStore().get(0);
+        Integer equal = trash.getFromStore().size();
+        assertThat(res1, is(whiteBread));
+        assertThat(equal, is(2));
+        Food res = warehouse.getFromStore().get(0);
+        assertThat(res, is(blackBread));
     }
 
     @Test
@@ -43,17 +47,22 @@ public class ControllQualityTest {
         storeList1.add(warehouse);
         storeList1.add(shop);
         storeList1.add(trash);
+        LocalDate now = LocalDate.now();
         Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0 );
-        Bread whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
-                LocalDate.of(2021, 9, 10), 150, 0 );
-        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 14),
-                LocalDate.of(2021, 9, 10), 120, 0 );
+                LocalDate.of(2021, 9, 10), 100, 0);
+        Bread whiteBread = new Bread("Baguette", now.plusDays(2),
+                now.minusDays(1), 150, 0);
+        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 10),
+                LocalDate.of(2021, 9, 10), 120, 0);
         ControllQuality rez = new ControllQuality(storeList1);
         rez.handler(blackBread);
         rez.handler(whiteBread);
         rez.handler(bunBread);
         Food res = warehouse.getFromStore().get(0);
+        Food resShop = shop.getFromStore().get(0);
+        Food resTrash = trash.getFromStore().get(0);
         assertThat(res, is(blackBread));
+        assertThat(resShop, is(whiteBread));
+        assertThat(resTrash, is(bunBread));
     }
 }

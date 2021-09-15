@@ -15,9 +15,9 @@ public class TrashTest {
     @Test
     public void acceptTest() {
         Food whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
-                LocalDate.of(2021, 9, 10), 150, 0 );
+                LocalDate.of(2021, 9, 10), 150, 0);
         Food blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0 );
+                LocalDate.of(2021, 9, 10), 100, 0);
         Trash test = new Trash();
         if (test.accept(whiteBread)) {
             test.addStore(whiteBread);
@@ -32,7 +32,7 @@ public class TrashTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void notAcceptTest() {
         Food blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0 );
+                LocalDate.of(2021, 9, 10), 100, 0);
         Trash test = new Trash();
         if (test.accept(blackBread)) {
             test.addStore(blackBread);

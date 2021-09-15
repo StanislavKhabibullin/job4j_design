@@ -17,8 +17,8 @@ public class ControllQuality {
 
     public Food handler(Food goods) {
 
-        for (Store storrr:
-             storeList) {
+        for (Store storrr
+                :storeList) {
            if (storrr.accept(goods)) {
                storrr.addStore(goods);
            }
@@ -27,8 +27,8 @@ public class ControllQuality {
     }
 
     public void printer() {
-        for (Store storrr:
-                storeList) {
+        for (Store storrr
+                :storeList) {
             storrr.print();
         }
     }
@@ -43,11 +43,11 @@ public class ControllQuality {
         storeList1.add(trash);
         System.out.println(LocalDate.now());
         Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0 );
+                LocalDate.of(2021, 9, 10), 100, 0);
         Bread whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
-                LocalDate.of(2021, 9, 10), 150, 0 );
+                LocalDate.of(2021, 9, 10), 150, 0);
         Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 14),
-                LocalDate.of(2021, 9, 10), 120, 0 );
+                LocalDate.of(2021, 9, 10), 120, 0);
         ControllQuality rez = new ControllQuality(storeList1);
         rez.handler(blackBread);
         rez.handler(whiteBread);

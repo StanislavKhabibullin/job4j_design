@@ -9,10 +9,10 @@ public class AccounterForFixedAssetsSearcher extends AccounterSearcher {
     @Override
     public boolean basicCriteria(Map<String, Boolean> questionsAnswers) {
         boolean result = true;
-        for (Map.Entry<String, Boolean> item :
-                questionsAnswers.entrySet()) {
+        for (Map.Entry<String, Boolean> item
+                :questionsAnswers.entrySet()) {
             if (!(item.getKey().equals("ability to work in the 1c program"))  //добавляем доп условие к методу базового класса
-                    &  item.getValue() != true) {
+                    &  !(item.getValue())) {
                 result = false;
             }
         }

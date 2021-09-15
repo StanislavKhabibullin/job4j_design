@@ -12,9 +12,9 @@ public class AccounterSearcher {
 
    public boolean basicCriteria(Map<String, Boolean> questionsAnswers) {
        boolean result = true;
-       for (Map.Entry<String, Boolean> item :
-               questionsAnswers.entrySet()) {
-           if (item.getValue() != true) {
+       for (Map.Entry<String, Boolean> item
+               :questionsAnswers.entrySet()) {
+           if (!(item.getValue())) {
                result = false;
            }
        }

@@ -35,8 +35,8 @@ public class Shop implements Store {
 
     @Override
     public void print() {
-        for (Food shopFood:
-                goodsOnShelves) {
+        for (Food shopFood
+                :goodsOnShelves) {
             System.out.println("on the shop shelves - " + shopFood);
         }
     }

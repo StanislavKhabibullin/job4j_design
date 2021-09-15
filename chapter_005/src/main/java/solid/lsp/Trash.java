@@ -21,8 +21,8 @@ public class Trash implements Store {
 
     @Override
     public void print() {
-        for (Food trashFood:
-                goodsInTrashBucket) {
+        for (Food trashFood
+                :goodsInTrashBucket) {
             System.out.println("in the trash bucket - " + trashFood);
         }
     }

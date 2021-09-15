@@ -1,7 +1,6 @@
-package solid.lsp.carParking;
+package solid.lsp.carparking;
 
 import java.util.Hashtable;
-import java.util.List;
 
 public interface FilingCarParking {
     Hashtable<Integer, Boolean> carInput(Integer carPlaceNumber); //заполняет машиноместа при въезде легкового авто

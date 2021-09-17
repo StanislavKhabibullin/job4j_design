@@ -20,12 +20,13 @@ public class ControllQualityTest {
         storeList1.add(warehouse);
         storeList1.add(shop);
         storeList1.add(trash);
-        Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0);
-        Bread whiteBread = new Bread("Baguette", LocalDate.of(2021, 9, 11),
-                LocalDate.of(2021, 9, 10), 150, 0);
-        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 14),
-                LocalDate.of(2021, 9, 10), 120, 0);
+        LocalDate now = LocalDate.now();
+        Bread blackBread = new Bread("Bojole", now.plusMonths(2),
+                now.minusDays(3), 100, 0);
+        Bread whiteBread = new Bread("Baguette", now.minusDays(4),
+                now.minusDays(10), 150, 0);
+        Bread bunBread = new Bread("Bun", now.minusDays(1),
+                now.minusMonths(1), 120, 0);
         ControllQuality rez = new ControllQuality(storeList1);
         rez.handler(blackBread);
         rez.handler(whiteBread);
@@ -48,12 +49,12 @@ public class ControllQualityTest {
         storeList1.add(shop);
         storeList1.add(trash);
         LocalDate now = LocalDate.now();
-        Bread blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0);
+        Bread blackBread = new Bread("Bojole", now.plusMonths(2),
+                now.minusDays(3), 100, 0);
         Bread whiteBread = new Bread("Baguette", now.plusDays(2),
                 now.minusDays(1), 150, 0);
-        Bread bunBread = new Bread("Bun", LocalDate.of(2021, 9, 10),
-                LocalDate.of(2021, 9, 10), 120, 0);
+        Bread bunBread = new Bread("Bun", now.minusMonths(1),
+                now.minusDays(2), 120, 0);
         ControllQuality rez = new ControllQuality(storeList1);
         rez.handler(blackBread);
         rez.handler(whiteBread);

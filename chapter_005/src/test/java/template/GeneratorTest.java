@@ -20,9 +20,10 @@ public class GeneratorTest {
     public void whenInputWrightArgumentInWrightTemplateThenCorrectResult() {
         Map<String, String> args = new HashMap<>();
         Generator generator = new GeneratorIdea();
-        args.put("Petr", "you");
+        args.put("${name},", "Petr,");
+        args.put("${subject}?", "you?");
         var res = generator.produce(template1, args);
-        assertThat(res, is("I am a Petr, Who are you?"));
+        assertThat(res, is("I am a Petr, Who are you? "));
     }
 
     @Test(expected = IllegalArgumentException.class)

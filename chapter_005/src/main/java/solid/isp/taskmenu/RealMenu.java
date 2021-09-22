@@ -1,8 +1,6 @@
-package solid.isp.taskMenu;
+package solid.isp.taskmenu;
 
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +15,8 @@ public class RealMenu implements Menu {
 
     @Override
     public List<Task> getMenu() {
-        for (int i = 0; i < taskList.size(); i++) {
+        int i = 0;
+        while (i < taskList.size()) {
             String taskN = taskList.get(i).taskNumber();
             var numbers = taskN.split("\\.");
             int quantity = numbers.length;
@@ -25,6 +24,7 @@ public class RealMenu implements Menu {
                 System.out.print("--");
             }
             System.out.println("Task " + taskN);
+            i++;
         }
         return taskList;
     }
@@ -48,8 +48,8 @@ public class RealMenu implements Menu {
         Scanner in = new Scanner(System.in);
         if (in.hasNext()) {
             String input = in.nextLine();
-            for (Task vert:
-                    res) {
+            for (Task vert
+                    :res) {
                 if (vert.taskNumber().equals(input)) {
                     System.out.println("Task contains this movie - " + vert.internalInfo());
                 }

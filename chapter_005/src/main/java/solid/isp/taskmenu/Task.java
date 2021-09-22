@@ -1,4 +1,4 @@
-package solid.isp.taskMenu;
+package solid.isp.taskmenu;
 
 public interface Task {
     String taskNumber();

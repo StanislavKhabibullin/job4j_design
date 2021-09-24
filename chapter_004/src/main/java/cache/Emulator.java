@@ -17,7 +17,7 @@ public class Emulator {
         questions.add("Get file content from cache");
         questions.add("Quit");
         for (int i = 0; i < questions.size(); i++) {
-            if (i != 0 ) {
+            if (i != 0) {
                 System.out.println(i + " ." + questions.get(i));
             }
         }

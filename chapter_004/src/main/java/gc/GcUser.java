@@ -27,7 +27,7 @@ public class GcUser {
         User user1 = new User(0, 0);
         System.out.println("Первоначальный размер объекта User " + String.valueOf(sizeOf(user1)));
         for (int i = 0; i < 15000; i++) {
-          user1 = new User( 98765432 + i, 153.4 + i);
+          user1 = new User(98765432 + i, 153.4 + i);
            System.out.println("размер объекта User " + String.valueOf(sizeOf(user1)));
         }
         info();

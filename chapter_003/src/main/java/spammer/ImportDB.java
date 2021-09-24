@@ -62,7 +62,7 @@ public class ImportDB {
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
         Properties cfg = new Properties();
-        try (FileInputStream in = new FileInputStream("C:\\projects\\job4j_design\\chapter_003\\src\\main\\java\\resources\\app.properties")) {
+        try (FileInputStream in = new FileInputStream("C:\\projects\\job4j_design\\chapter_003\\src\\main\\resources\\app.properties")) {
             cfg.load(in);
         } catch (IOException e) {
             e.printStackTrace();

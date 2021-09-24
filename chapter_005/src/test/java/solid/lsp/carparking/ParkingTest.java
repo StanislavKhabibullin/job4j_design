@@ -9,7 +9,7 @@ public class ParkingTest {
 
     @Test
     public void parking() {
-        Auto car = new Car(1);
+        Auto car = new Car();
         Auto truck = new Truck(3);
         Parking parking = new UndergroundParking(3, 1);
         assertThat(parking.parking(car), is(true));
@@ -19,7 +19,7 @@ public class ParkingTest {
 
     @Test
     public void noPlaceForTruck1() {
-        Auto car = new Car(1);
+        Auto car = new Car();
         Auto truck = new Truck(3);
         Parking parking = new UndergroundParking(10, 0);
         assertThat(parking.parking(car), is(true));
@@ -28,7 +28,7 @@ public class ParkingTest {
 
     @Test
     public void noPlaceForTruck2() {
-        Auto car = new Car(1);
+        Auto car = new Car();
         Auto truck = new Truck(3);
         Parking parking = new UndergroundParking(3, 0);
         assertThat(parking.parking(car), is(true));

@@ -1,10 +1,9 @@
 package solid.lsp.carparking;
 
 public class Car implements Auto {
-    private int carSize;
+    private int carSize = 1;
 
-    public Car(int carSize) {
-        this.carSize = carSize;
+    public Car() {
     }
 
     @Override

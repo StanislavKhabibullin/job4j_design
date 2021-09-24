@@ -8,7 +8,7 @@ public class AutoTest {
 
     @Test
     public void size() {
-        Auto car = new Car(1);
+        Auto car = new Car();
         Auto truck = new Truck(3);
         int carRes = car.size();
         int truckRes = truck.size();

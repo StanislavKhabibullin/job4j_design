@@ -17,7 +17,7 @@ public class ExamFile extends SimpleFileVisitor<Path> {
        ArgumentsHandler recive = new ArgumentsHandler();
        recive.getArguments(args);
         SearchFile searchFile = new SearchFile();
-        var iting =  searchFile.search(recive.getPath().toString(), recive.getPoisk(),recive.getStr());
+        var iting =  searchFile.search(recive.getPath().toString(), recive.getPoisk(), recive.getStr());
         FileWriterClass fileWriterClass = new FileWriterClass();
         fileWriterClass.writeInFile(iting, recive.getFileName());
 

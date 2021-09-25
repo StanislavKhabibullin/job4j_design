@@ -14,6 +14,11 @@ public class Warehouse implements Store {
     }
 
     @Override
+    public void clearStore() {
+        goodsInStock.clear();
+    }
+
+    @Override
     public List<Food> getFromStore() {
         return goodsInStock;
     }

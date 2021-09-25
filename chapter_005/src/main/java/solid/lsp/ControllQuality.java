@@ -9,6 +9,9 @@ import java.util.List;
 public class ControllQuality {
 
    List<Store> storeList;
+   FoodHandler handlerImp = new Handler();
+   FoodResort foodResort = new Resoter();
+   StorePrinter storePrinter = new SoutClass();
 
 
     public ControllQuality(List<Store> storeList) {
@@ -16,22 +19,17 @@ public class ControllQuality {
     }
 
     public Food handler(Food goods) {
-
-        for (Store storrr
-                :storeList) {
-           if (storrr.accept(goods)) {
-               storrr.addStore(goods);
-           }
-        }
-        return goods;
+        return handlerImp.handler(storeList, goods);
     }
 
-    public void printer() {
-        for (Store storrr
-                :storeList) {
-            storrr.print();
-        }
+    public void resort() {
+        foodResort.resort(storeList, handlerImp);
     }
+
+    public void print() {
+        storePrinter.print(storeList);
+    }
+
 
     public static void main(String[] args) {
         Store warehouse = new Warehouse();
@@ -52,6 +50,10 @@ public class ControllQuality {
         rez.handler(blackBread);
         rez.handler(whiteBread);
         rez.handler(bunBread);
-        rez.printer();
+        rez.print();
+        rez.resort();
+        rez.print();
     }
+
+
 }

@@ -20,6 +20,11 @@ public class Trash implements Store {
     }
 
     @Override
+    public void clearStore() {
+        goodsInTrashBucket.clear();
+    }
+
+    @Override
     public void print() {
         for (Food trashFood
                 :goodsInTrashBucket) {

@@ -14,6 +14,11 @@ public class Shop implements Store {
    }
 
     @Override
+    public void clearStore() {
+        goodsOnShelves.clear();
+    }
+
+    @Override
     public boolean accept(Food food) {
         LocalDate now = LocalDate.now();
         var duration = (double) ChronoUnit.DAYS.between(food.getCreateDate(), food.getExpiryDate());

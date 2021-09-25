@@ -9,6 +9,8 @@ public interface Store {
 
     void addStore(Food goods);
 
+    void clearStore();
+
     List<Food> getFromStore();
 
     void print();

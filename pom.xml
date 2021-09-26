@@ -33,6 +33,7 @@
                 <db.driver>org.postgresql.Driver</db.driver>
             </properties>
         </profile>
+
     </profiles>
     <build>
         <plugins>
@@ -94,14 +95,14 @@
                                 </transformer>
                             </transformers>
                         </configuration>
-                    </execution>
-                </executions>
+                   </execution>
+        </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.2</version>
-                <executions>
+                    <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
@@ -118,7 +119,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
     <dependencies>
@@ -180,6 +180,7 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.16</version>
         </dependency>
+
     </dependencies>
 
     <modules>

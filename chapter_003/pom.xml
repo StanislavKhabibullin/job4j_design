@@ -55,6 +55,10 @@
                     <password>${db.password}</password>
                 </configuration>
                 <executions>
+                <id>test</id>
+<activation>
+    <activeByDefault>true</activeByDefault>
+</activation>
                     <execution>
                         <phase>process-resources</phase>
                         <goals>

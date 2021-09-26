@@ -1,0 +1,12 @@
+C:\projects\job4j_design\.\chapter_001\pom.xml
+C:\projects\job4j_design\.\chapter_002\pom.xml
+C:\projects\job4j_design\.\chapter_003\pom.xml
+C:\projects\job4j_design\.\chapter_004\pom.xml
+C:\projects\job4j_design\.\chapter_005\pom.xml
+C:\projects\job4j_design\.\pom.xml
+C:\projects\job4j_design\.\chapter_001\pom.xml
+C:\projects\job4j_design\.\chapter_002\pom.xml
+C:\projects\job4j_design\.\chapter_003\pom.xml
+C:\projects\job4j_design\.\chapter_004\pom.xml
+C:\projects\job4j_design\.\chapter_005\pom.xml
+C:\projects\job4j_design\.\pom.xml

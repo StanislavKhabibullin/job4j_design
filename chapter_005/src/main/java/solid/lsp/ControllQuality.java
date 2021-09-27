@@ -51,7 +51,7 @@ public class ControllQuality {
         rez.handler(whiteBread);
         rez.handler(bunBread);
         rez.print();
-        rez.resort();
+        rez.resort(); //класс, реализующий интерфейс FoodResort
         rez.print();
     }
 

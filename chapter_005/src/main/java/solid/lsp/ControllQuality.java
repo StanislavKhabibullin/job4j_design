@@ -1,4 +1,9 @@
 package solid.lsp;
+/**
+ * @author Stanislav
+ * @version 1.1
+ * 
+ */
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -7,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllQuality {
-
+    /**
+     *
+     *This is a result class, which contains
+     * several interfaces
+     */
    List<Store> storeList;
    FoodHandler handlerImp = new Handler();
    FoodResort foodResort = new Resoter();
@@ -18,7 +27,16 @@ public class ControllQuality {
         this.storeList = storeList;
     }
 
-    public Food handler(Food goods) {
+    /**
+     * this method is handling products and
+     * allocated them in different storages
+     * @param goods - product which will allocate in storage
+     * @return - will back food, which it will put in the definit storage
+     * @throws RuntimeException exist
+     * @see Handler#handler(List, Food)
+     * @see "FoodHandler interface"
+     */
+    public Food handler(Food goods) throws RuntimeException {
         return handlerImp.handler(storeList, goods);
     }
 

@@ -1,5 +1,5 @@
 package tictactoe;
 
-public interface СheckWin {
+public interface CheckWin {
     boolean checkW(char vib);
 }

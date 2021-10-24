@@ -7,7 +7,10 @@ public class TripCostOnTaxi extends TripCost {
 
     @Override
     float tripPrice() {
-        float price = priceForkm; // пропущено условие льготного проезда
+        /**
+         * // пропущено условие льготного проезда
+         */
+        float price = priceForkm;
         price = price * pathLength;
         return price;
     }

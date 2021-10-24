@@ -10,9 +10,9 @@ public class UsageLog4jException {
 
     public static void main(String[] args) {
         try {
-            throw new Exception("Not supported code"); // почему тут может быть исключение
+            throw new Exception("Not supported code");
         } catch (Exception e) {
-            LOG.error("Exception in log example", e); // объект исключения
+            LOG.error("Exception in log example", e);
         }
     }
 

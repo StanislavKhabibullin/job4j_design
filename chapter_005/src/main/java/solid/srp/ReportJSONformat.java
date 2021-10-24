@@ -20,7 +20,7 @@ public class ReportJSONformat implements Report {
     }
 
     public String serializeToJSON(List<Employee> list) {
-        //String rest;
+
         StringBuilder text = new StringBuilder();
         Gson gson = new GsonBuilder().create();
         try {
@@ -28,16 +28,7 @@ public class ReportJSONformat implements Report {
             xtemp = templeFile;
             try (FileOutputStream fos = new FileOutputStream(templeFile);
                  ObjectOutputStream ois = new ObjectOutputStream(fos)) {
-               /* for (Employee employee
-                        : list) {
-                    text.append(gson.toJson(employee))
-                            .append(System.lineSeparator());
 
-                    rest = gson.toJson(employee);
-                    ois.writeObject(rest);
-                }
-
-                */
                 var lib = gson.toJson(list);
                 text.append(lib);
                 ois.writeObject(lib);
@@ -50,7 +41,7 @@ public class ReportJSONformat implements Report {
         }
         return String.valueOf(text);
     }
-/*
+/**
     public List<Employee> deSerializeFromJSON() {
         List<Employee> resultAfterSeri = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(xtemp);

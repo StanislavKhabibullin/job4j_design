@@ -3,7 +3,10 @@ package ru.job4j.email;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-//используемый класс
+/**
+ * используемый класс
+ */
+
 public class ResultMails {
     private String name;
     private Set<String> nameAdress;

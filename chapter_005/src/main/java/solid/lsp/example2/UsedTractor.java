@@ -4,7 +4,7 @@ public class UsedTractor {
     int engineHours;
     float price;
     float pecentage;
-/*
+/**
 класс используемый при приобретении б/у тракторов
  */
 
@@ -38,8 +38,13 @@ public class UsedTractor {
         this.pecentage = pecentage;
     }
 
-    float getPriceFutureUsage() {   // рассчитываем стоимость будущего моточаса трактора
-        float remainigPowerReserved = 1 - pecentage; // остаток ресурса в %
+    /**
+     *  рассчитываем стоимость будущего моточаса трактора
+     *  float remainigPowerReserved = 1 - pecentage; // остаток ресурса в %
+     * @return
+     */
+    float getPriceFutureUsage() {
+        float remainigPowerReserved = 1 - pecentage;
         if (remainigPowerReserved < 0.3) {
             throw new IllegalArgumentException("This tractor is garbage");
         }

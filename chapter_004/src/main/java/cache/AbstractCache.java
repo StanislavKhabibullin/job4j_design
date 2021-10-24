@@ -14,17 +14,25 @@ public abstract class AbstractCache<K, V> {
 
     public void put(K key, V value) {
         SoftReference<V> softReference = new SoftReference<V>(value);
-      /*  try (PrintWriter fw = new PrintWriter(key.toString())) {
-            fw.println(value);
-        }
-
+      /**
+       * Old variant code
+       *  try (PrintWriter fw = new PrintWriter(key.toString())) {
+       *     fw.println(value);
+       * }
        */
         cache.put(key, softReference);
     }
 
+    /**
+     * V value = cache.getOrDefault(key, defaultReferernce).get(); // если ключ(имя файла) не найдено, то возвращается ссылка на null
+     * @param key
+     * @return
+     * @throws IOException
+     */
     public V get(K key) throws IOException {
         SoftReference<V> defaultReferernce = new SoftReference<V>(null);
-        V value = cache.getOrDefault(key, defaultReferernce).get(); // если ключ(имя файла) не найдено, то возвращается ссылка на null
+        V value = cache.getOrDefault(key, defaultReferernce).get();
+
 
         if (value == null) {
             value = load(key);

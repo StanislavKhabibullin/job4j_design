@@ -55,23 +55,41 @@ public class Person {
                 new Person(true, 30,
                         new Contact(123456, "11-111"),
                         "worked", "Married");
-        // Получаем контекст для доступа к АПИ
+        /**
+         *Получаем контекст для доступа к АПИ
+          */
+
         JAXBContext context = JAXBContext.newInstance(Person.class);
-        // Создаем сериализатор
+        /**
+         *Создаем сериализатор
+          */
+
         Marshaller marshaller = context.createMarshaller();
-        // Указываем что нам нужно форматирование
+        /**
+         *Указываем что нам нужно форматирование
+          */
+
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         String xml = "";
         try (StringWriter writer = new StringWriter()) {
-            //Сериализуем
+            /**
+             *Сериализуем
+             */
+
             marshaller.marshal(person, writer);
             xml = writer.getBuffer().toString();
             System.out.println(xml);
         }
-        // Для десериализации создаем десериализатор
+        /**
+         *Для десериализации создаем десериализатор
+          */
+
         Unmarshaller unmarshaller = context.createUnmarshaller();
         try (StringReader reader = new StringReader(xml)) {
-            //десериализуем
+            /**
+             *десериализуем
+             */
+
             Person result = (Person) unmarshaller.unmarshal(reader);
             System.out.println(result);
 

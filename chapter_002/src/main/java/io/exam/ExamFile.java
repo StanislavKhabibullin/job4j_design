@@ -26,7 +26,7 @@ public class ExamFile extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         try (PrintWriter writer = new PrintWriter(new FileOutputStream(fileName, true))) {
-            // byte[] bytes = file.toAbsolutePath().toString().getBytes();
+
             if (poisk.equals("mask")) {
                 var linek = str.split("\\.");
                 if (file.toAbsolutePath().getFileName().toString().contains(linek[1])) {
@@ -41,7 +41,7 @@ public class ExamFile extends SimpleFileVisitor<Path> {
 
             }
         }
-       // System.out.println(file.toAbsolutePath().getFileName().toString().contains(str));
+
         return super.visitFile(file, attrs);
     }
 

@@ -1,9 +1,14 @@
 package solid.lsp.example3;
 
 public class TripCost {
-    int pathLength;   // длина пути
-    boolean benefit; // льгота на поездку
-    float priceForkm; //стоимость за км
+    /**
+     * // длина пути
+     *  // льгота на поездку
+     *   //стоимость за км
+     */
+    int pathLength;
+    boolean benefit;
+    float priceForkm;
 
     public TripCost(int pathLength, boolean benefit, float priceForkm) {
         this.pathLength = pathLength;

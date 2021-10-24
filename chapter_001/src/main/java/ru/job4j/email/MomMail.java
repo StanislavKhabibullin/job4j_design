@@ -3,7 +3,10 @@ package ru.job4j.email;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.function.Function;
-// экзаменационный файл
+/**
+ * экзаменационный файл
+  */
+
 public class MomMail {
     private Map<String, Set<String>> rsl = new HashMap<>();
     private Map<String, Set<String>> result = new LinkedHashMap<>();

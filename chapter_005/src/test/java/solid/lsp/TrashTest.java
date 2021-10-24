@@ -31,8 +31,9 @@ public class TrashTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void notAcceptTest() {
-        Food blackBread = new Bread("Bojole", LocalDate.of(2021, 10, 22),
-                LocalDate.of(2021, 9, 10), 100, 0);
+        LocalDate now = LocalDate.now();
+        Food blackBread = new Bread("Bojole", now.plusDays(2),
+                now.minusMonths(1), 100, 0);
         Trash test = new Trash();
         if (test.accept(blackBread)) {
             test.addStore(blackBread);

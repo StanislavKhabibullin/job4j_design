@@ -45,13 +45,19 @@ public class Contact implements Serializable {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         final Contact contact = new Contact(12345678, "777-777-77-77");
-// запись объекта в файл:
+/**
+ *      запись объекта в файл:
+  */
+
         File tempFile = Files.createTempFile(null, null).toFile();
         try (FileOutputStream fos = new FileOutputStream(tempFile);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(contact);
         }
-// чтение объекта из файла
+/**
+ *      чтение объекта из файла
+  */
+
         try (FileInputStream fis = new FileInputStream(tempFile);
         ObjectInputStream ois = new ObjectInputStream(fis)) {
             final Contact contactFromFile = (Contact) ois.readObject();

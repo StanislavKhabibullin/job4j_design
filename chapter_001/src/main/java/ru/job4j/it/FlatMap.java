@@ -6,18 +6,12 @@ import java.util.*;
 public class FlatMap<T> implements Iterator<T> {
     private final Iterator<Iterator<T>> data;
     private Iterator<T> coursor = Collections.emptyIterator();
-    //private List<T> temp = new ArrayList<>();
+
 
 
     public FlatMap(Iterator<Iterator<T>> data) {
                 this.data = data;
-       /* while (data.hasNext()) {
-            Iterator<T> inner = data.next();
-            while (inner.hasNext()) {
-                temp.add(inner.next());
-            }
-        }
-        coursor = temp.iterator(); */
+
     }
 
     @Override
@@ -27,17 +21,7 @@ public class FlatMap<T> implements Iterator<T> {
            }
             return coursor.hasNext();
         }
-       /* if (coursor == null) {
-            coursor = data.next();
-        }
-        if (!coursor.hasNext() && !data.hasNext()) {
-            return false;
-        }
-        if (!coursor.hasNext() && data.hasNext()) {
-            coursor = data.next();
 
-        }
-        return coursor.hasNext(); */
 
 
     @Override

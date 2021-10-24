@@ -32,7 +32,6 @@ public class GcUser {
         }
         info();
         Integer bigint = 0;
-       // int tror = Integer.parseInt(null);
         EmptyObject testObject = new EmptyObject();
 
         System.out.println("свободная память  в конце программаы " + (Runtime.getRuntime().freeMemory()));

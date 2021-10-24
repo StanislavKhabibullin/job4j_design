@@ -35,10 +35,15 @@ public class UsedBelTractor extends UsedTractor {
         super.setPecentage(pecentage);
     }
 
+    /**
+     *  int residualMotorLife = 1_000_000 - engineHours; // пропустили условие при котором метод выдает
+     *  float result = price / residualMotorLife;        // исключение что приобретаемая техника мусор
+     * @return
+     */
     @Override
     float getPriceFutureUsage() {
-        int residualMotorLife = 1_000_000 - engineHours; // пропустили условие при котором метод выдает
-        float result = price / residualMotorLife;        // исключение что приобретаемая техника мусор
+        int residualMotorLife = 1_000_000 - engineHours;
+        float result = price / residualMotorLife;
         return result;
     }
 }

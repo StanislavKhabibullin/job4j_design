@@ -20,7 +20,12 @@ public class Zip {
         packManyFiles(road, finalTarget);
     }
 
-    public Map<String, String> argumetsRecieves(List<String> masik) {  // вытаскиваем аргументы для работы
+    /**
+     *  // вытаскиваем аргументы для работы
+     * @param masik
+     * @return
+     */
+    public Map<String, String> argumetsRecieves(List<String> masik) {
         Map<String, String> arguments = new HashMap<>();
         for (int i = 0; i < masik.size(); i++) {
             List<String> mas = Arrays.asList(masik.get(i).split("="));
@@ -32,7 +37,13 @@ public class Zip {
         return arguments;
     }
 
-    public List<Path> pathList(String directory, String fileExtension) { // определеям пути по которым находятся файлы для архивации
+    /**
+     *  // определеям пути по которым находятся файлы для архивации
+     * @param directory
+     * @param fileExtension
+     * @return
+     */
+    public List<Path> pathList(String directory, String fileExtension) {
         Search searcher = new Search();
         var ser = searcher.search(Path.of(directory), path -> path.toString()
                 .endsWith(fileExtension));

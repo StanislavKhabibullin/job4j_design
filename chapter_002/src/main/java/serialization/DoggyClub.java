@@ -63,11 +63,20 @@ public class DoggyClub {
     public static void main(String[] args) throws Exception {
        DoggyClub doggyClub = new DoggyClub(true, 3, "giant schnauzer",
                 new String[]{"small", "medium", "large"}, new NickName("Star", 5));
-        //получаем контекст для доступа к АПИ
+        /**
+         *получаем контекст для доступа к АПИ
+         */
+
         JAXBContext context = JAXBContext.newInstance(DoggyClub.class);
-        // Создаем сериализатор
+        /**
+         *Создаем сериализатор
+          */
+
         Marshaller marshaller = context.createMarshaller();
-        // Указываем что нам нужно форматирование
+        /**
+         *Указываем что нам нужно форматирование
+          */
+
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         String xml = "";
         try (StringWriter writer = new StringWriter()) {

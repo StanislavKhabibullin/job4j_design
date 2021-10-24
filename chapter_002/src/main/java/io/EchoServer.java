@@ -47,7 +47,7 @@ public class EchoServer {
                     if (isRead) {
                         out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                         out.write("<h2>Hello dear friends<h2>".getBytes());
-                        //server.close();
+
                         if (excited) {
                             out.write("\n".getBytes());
                             out.write("User write Exit".getBytes());

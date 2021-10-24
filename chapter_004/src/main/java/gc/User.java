@@ -3,11 +3,11 @@ package gc;
 public class User {
     /**
      * fields value:
-     *  private String userName = null; // заголовок 8 байт + (3 поля int = 12 байт) + (ссылочная переменна
-     *                              // на объект массива = 4 байта)
-     *                              // + 12 байт на объект массива + 2 байта на каждый объект строки
-     *     private int bilnumber; // 4 байта
-     *     private double sumMoney; // 8 байт
+     *  private String userName = null; заголовок 8 байт + (3 поля int = 12 байт) + (ссылочная переменна
+     *                              на объект массива = 4 байта)
+     *                              + 12 байт на объект массива + 2 байта на каждый объект строки
+     *     private int bilnumber;  4 байта
+     *     private double sumMoney; 8 байт
      */
 
     private String userName = null;

@@ -40,7 +40,7 @@ public class UsedTractor {
 
     /**
      *  рассчитываем стоимость будущего моточаса трактора
-     *  float remainigPowerReserved = 1 - pecentage; // остаток ресурса в %
+     *  float remainigPowerReserved = 1 - pecentage;  остаток ресурса в %
      * @return
      */
     float getPriceFutureUsage() {

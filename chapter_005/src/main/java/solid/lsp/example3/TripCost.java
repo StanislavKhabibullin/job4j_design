@@ -2,9 +2,9 @@ package solid.lsp.example3;
 
 public class TripCost {
     /**
-     * // длина пути
-     *  // льгота на поездку
-     *   //стоимость за км
+     *  длина пути
+     *  льгота на поездку
+     * стоимость за км
      */
     int pathLength;
     boolean benefit;

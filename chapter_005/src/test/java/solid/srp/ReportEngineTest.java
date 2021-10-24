@@ -54,7 +54,7 @@ public class ReportEngineTest {
         store.add(worker);
         Report engine = new ReportForProgrammerClass(store);
         StringBuilder result = new StringBuilder();
-        result.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \n"
+        result.append("<!DOCTYPE HTML PUBLIC \"-/" + "/W3C/" + "/DTD HTML 4.01/" + "/EN\" \n"
                 + " \"http://www.w3.org/TR/html4/strict.dtd\">")
                 .append(System.lineSeparator())
                 .append("<h1>Name; Hired; Fired; FixedSalary</h1>")

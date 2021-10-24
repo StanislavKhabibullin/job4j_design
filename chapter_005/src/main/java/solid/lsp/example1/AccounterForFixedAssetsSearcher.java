@@ -12,7 +12,7 @@ public class AccounterForFixedAssetsSearcher extends AccounterSearcher {
         for (Map.Entry<String, Boolean> item
                 :questionsAnswers.entrySet()) {
             /**
-             *  //добавляем доп условие к методу базового класса
+             *  добавляем доп условие к методу базового класса
              */
             if (!(item.getKey().equals("ability to work in the 1c program"))
                     &  !(item.getValue())) {

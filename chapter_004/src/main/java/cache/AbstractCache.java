@@ -24,7 +24,7 @@ public abstract class AbstractCache<K, V> {
     }
 
     /**
-     * V value = cache.getOrDefault(key, defaultReferernce).get(); // если ключ(имя файла) не найдено, то возвращается ссылка на null
+     * V value = cache.getOrDefault(key, defaultReferernce).get(); если ключ(имя файла) не найдено, то возвращается ссылка на null
      * @param key
      * @return
      * @throws IOException

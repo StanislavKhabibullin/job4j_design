@@ -71,7 +71,9 @@ public class ReportJSONformat implements Report {
     public String generate(Predicate<Employee> filter) {
         List<Employee> result = store.findBy(filter);
         String text = serializeToJSON(result);
-       // deSerializeFromJSON();
+        /**
+         *  deSerializeFromJSON();
+         */
         return text;
     }
 

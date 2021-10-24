@@ -36,8 +36,8 @@ public class UsedBelTractor extends UsedTractor {
     }
 
     /**
-     *  int residualMotorLife = 1_000_000 - engineHours; // пропустили условие при котором метод выдает
-     *  float result = price / residualMotorLife;        // исключение что приобретаемая техника мусор
+     *  int residualMotorLife = 1_000_000 - engineHours;  пропустили условие при котором метод выдает
+     *  float result = price / residualMotorLife;         исключение что приобретаемая техника мусор
      * @return
      */
     @Override

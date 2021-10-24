@@ -25,21 +25,21 @@ import java.util.List;
  */
 public interface SportRes<T> {
     /**
-     * //из названия файла получаем дату проведения Триатлона
+     * из названия файла получаем дату проведения Триатлона
      * @param yearOfTheEvent
      * @return
      */
     LocalDate getData(File yearOfTheEvent);
 
     /**
-     * //получаем список участников триатлона из файла
+     * получаем список участников триатлона из файла
      * @param yearOfTheEvent
      * @return
      */
     List<T> triatlonMembers(File yearOfTheEvent);
 
     /**
-     * //конвертируем данные в SQL-таблицу
+     * конвертируем данные в SQL-таблицу
      * @param triatlonMembers
      * @param getData
      */

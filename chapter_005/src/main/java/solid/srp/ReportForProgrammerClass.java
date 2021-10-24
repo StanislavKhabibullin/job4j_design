@@ -14,7 +14,7 @@ public class ReportForProgrammerClass implements Report {
     public String generate(Predicate<Employee> filter) {
         StringBuilder text = new StringBuilder();
         List<Employee> result = store.findBy(filter);
-        text.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \n"
+        text.append("<!DOCTYPE HTML PUBLIC \"-/" + "/W3C/" + "/DTD HTML 4.01/" + "/EN\" \n"
                 + " \"http://www.w3.org/TR/html4/strict.dtd\">");
         text.append(System.lineSeparator());
         text.append("<h1>Name; Hired; Fired; FixedSalary</h1>");

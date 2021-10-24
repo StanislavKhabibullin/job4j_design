@@ -23,14 +23,14 @@ import java.util.Map;
  */
 public interface SeasonalHarvest<T, S> {
     /**
-     * // урожайность сельскохозяйственной культуры
+     *  урожайность сельскохозяйственной культуры
      * @param agriCulture
      * @return
      */
     Map<T, S> productivity(String  agriCulture);
 
     /**
-     * // планируемый урожай в зависимости от площадей посева
+     *  планируемый урожай в зависимости от площадей посева
      *
      * @param productivity
      * @param sowingAreas

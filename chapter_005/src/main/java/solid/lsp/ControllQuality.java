@@ -70,7 +70,7 @@ public class ControllQuality {
         rez.handler(bunBread);
         rez.print();
         /**
-         *  //класс, реализующий интерфейс FoodResort
+         *  класс, реализующий интерфейс FoodResort
          */
         rez.resort();
         rez.print();
